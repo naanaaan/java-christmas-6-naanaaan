@@ -1,7 +1,6 @@
 package christmas.domain;
 
 import java.util.Arrays;
-import java.util.EnumMap;
 
 public enum Menu {
 
@@ -37,14 +36,11 @@ public enum Menu {
 				.findFirst()
 				.orElseThrow(() -> new IllegalArgumentException());
 	}
-
-	public static EnumMap<Menu, Integer> initializeFoodCounter() {
-		EnumMap<Menu, Integer> foodCounter = new EnumMap<>(Menu.class);
-		Arrays.stream(Menu.values())
-				.forEach(food -> foodCounter.put(food, 0));
-		return foodCounter;
+	
+	public Food toFood() {
+		return new Food(category, name, price);
 	}
-
+	
 	public FoodCategory getCategory() {
 		return category;
 	}
