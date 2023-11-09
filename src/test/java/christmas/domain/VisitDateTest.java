@@ -2,9 +2,11 @@ package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class VisitDateTest {
@@ -23,4 +25,12 @@ public class VisitDateTest {
 	void checkNomalOperation1(int day) {
 		assertDoesNotThrow(() -> new VisitDate(day));
 	}
+
+	@ParameterizedTest
+	@CsvSource(value = { "1, true", "5, false", "21, 17", "30, true", }, delimiter = ',')
+    void checkWeekend(int day, boolean expect) {
+        VisitDate visitDate = new VisitDate(day);
+        boolean result = visitDate.checkWeekend();
+        assertEquals(expect, result);
+    }
 }
