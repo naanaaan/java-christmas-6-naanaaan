@@ -4,8 +4,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +16,7 @@ public class FoodsTest {
 	@DisplayName("Foods의 사이즈가 1 ~ 20이 아닐 때 예외가 발생한다.")
 	@MethodSource("createCreateFoodByOverSizeMethodParameter")
 	@ParameterizedTest
-	void createFoodByOverSize(List<Food> foods) {
+	void createFoodsByOverSize(List<Food> foods) {
 		assertThatThrownBy(() -> new Foods(foods))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
@@ -47,7 +45,7 @@ public class FoodsTest {
 	@DisplayName("음료수만 존재할 때 예외가 발생한다.")
 	@MethodSource("createCreateFoodByOnlyBeverageMethodParameter")
 	@ParameterizedTest
-	void createFoodByOnlyBeverage(List<Food> foods) {
+	void createFoodsByOnlyBeverage(List<Food> foods) {
 		assertThatThrownBy(() -> new Foods(foods))
 				.isInstanceOf(IllegalArgumentException.class);
 	}
