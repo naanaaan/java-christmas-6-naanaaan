@@ -12,8 +12,4 @@ public enum FoodCategory {
 	FoodCategory(String categoryName) {
 		this.categoryName = categoryName;
 	}
-
-	public String getKoreanName() {
-		return categoryName;
-	}
 }
