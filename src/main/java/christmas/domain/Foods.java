@@ -17,10 +17,17 @@ public class Foods {
 
 	private void validate(List<Food> foods) {
 		validateFoodNumber(foods);
+		validateOnlyBeverage(foods);
 	}
 
 	private void validateFoodNumber(List<Food> foods) {
 		if (isOutOfRange(foods.size())) {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	private void validateOnlyBeverage(List<Food> foods) {
+		if (foods.stream().allMatch(food -> food.foodCategory() == FoodCategory.BEVERAGE)) {
 			throw new IllegalArgumentException();
 		}
 	}
