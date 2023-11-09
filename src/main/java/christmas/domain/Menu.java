@@ -30,11 +30,9 @@ public enum Menu {
 		this.price = price;
 	}
 
-	public static Menu findByName(String name) {
+	public static boolean checkByName(String name) {
 		return Arrays.stream(values())
-				.filter(food -> food.name.equalsIgnoreCase(name))
-				.findFirst()
-				.orElseThrow(() -> new IllegalArgumentException());
+				.anyMatch(menu -> menu.name.equals(name));
 	}
 	
 	public Food toFood() {
