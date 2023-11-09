@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class FoodsTest {
 	@MethodSource("createCheckNomalOperation1Parameter")
 	@ParameterizedTest
 	void checkNomalOperation1(List<Food> foods) {
-		new Foods(foods);
+		assertDoesNotThrow(() -> new Foods(foods));
 	}
 
 	static Stream<Arguments> createCheckNomalOperation1Parameter() {
@@ -61,7 +62,7 @@ public class FoodsTest {
 	@MethodSource("createCheckNomalOperation2Parameter")
 	@ParameterizedTest
 	void checkNomalOperation2(List<Food> foods) {
-		new Foods(foods);
+		assertDoesNotThrow(() -> new Foods(foods));
 	}
 
 	static Stream<Arguments> createCheckNomalOperation2Parameter() {

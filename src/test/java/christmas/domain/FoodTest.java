@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,6 @@ public class FoodTest {
 	@DisplayName("메뉴에 있는 음식을 생성할 때 정상 작동한다.")
 	@Test
 	void checkNomalOperation1() {
-		Food food = Menu.BBQ_RIBS.toFood();
+		assertDoesNotThrow(() -> Menu.BBQ_RIBS.toFood());
 	}
 }
