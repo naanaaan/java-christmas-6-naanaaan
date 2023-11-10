@@ -53,6 +53,10 @@ public class CreateService {
 		Food food = Menu.getFoodByName(foodName);
 
 		if (Objects.nonNull(food)) {
+			if (foodCounter.containsKey(food)) {
+				throw new IllegalArgumentException();
+			}
+
 			foodCounter.put(food, number);
 		}
 	}
