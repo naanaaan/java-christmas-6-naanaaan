@@ -15,4 +15,12 @@ public record Food(FoodCategory foodCategory, String name, int price) {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public boolean checkCategory(FoodCategory categoryToCheck) {
+		if (foodCategory == categoryToCheck) {
+			return true;
+		}
+
+		return false;
+	}
 }
