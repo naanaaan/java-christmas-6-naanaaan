@@ -3,6 +3,8 @@ package christmas.domain;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
+import christmas.service.ErrorMessage;
+
 public class VisitDate {
 
 	private static int YEAR = 2023;
@@ -23,7 +25,7 @@ public class VisitDate {
 
 	private void validateisOutOfRange(int day) {
 		if (day > MAX_DAY || day < MIN_DAY) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorMessage.VISITDATE.getMessage());
 		}
 	}
 

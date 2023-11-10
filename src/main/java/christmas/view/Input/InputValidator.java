@@ -27,7 +27,7 @@ public class InputValidator {
 
 	public static void validateIsEmpty(String inputValue) {
 		if (isEmpty(inputValue)) {
-			throw new IllegalArgumentException("값이 비어있습니다");
+			throw new IllegalArgumentException(ErrorMessage.VISITDATE.getMessage());
 		}
 	}
 
