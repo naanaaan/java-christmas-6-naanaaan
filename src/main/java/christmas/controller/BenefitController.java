@@ -11,7 +11,10 @@ import christmas.service.benefit.GiveawayEventService;
 import christmas.service.benefit.SpecialDiscountService;
 
 public class BenefitController {
-
+	
+	private static final int DISCOUT_CONDITION = 10_000;
+	private static final int GIVEAWAY_CONDITION = 120_000;
+	
 	private final DayOfWeekDiscountService dayOfWeekDiscountService;
 	private final DDayDiscountService dDayDiscountService;
 	private final GiveawayEventService giveawayEventService;
@@ -28,12 +31,12 @@ public class BenefitController {
 		int totalBenefitsAmount = 0;
 		int day = visitDate.getDay();
 
-		if (totalOrderAmount >= 100000) {
+		if (totalOrderAmount >= DISCOUT_CONDITION) {
 			totalBenefitsAmount = getDayOfWeekDiscount(visitDate, foods) + getDDayDiscount(day)
 					+ getSpecialDiscount(day);
 		}
 
-		if (totalOrderAmount >= 120000) {
+		if (totalOrderAmount >= GIVEAWAY_CONDITION) {
 			List<Food> eventProducts = getEventProducts();
 			totalBenefitsAmount += getSumEventProductPrice(eventProducts);
 		}
