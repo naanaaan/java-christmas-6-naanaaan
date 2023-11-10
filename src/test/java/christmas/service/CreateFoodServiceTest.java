@@ -12,13 +12,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import christmas.domain.Foods;
 
-public class CreateServiceTest {
+public class CreateFoodServiceTest {
 
-	private CreateService service;
+	private CreateFoodService service;
 
 	@BeforeEach
 	void setUp() {
-		service = new CreateService();
+		service = new CreateFoodService();
 	}
 
 	@DisplayName("음식들을 생성하고 사이즈를 확인한다.")

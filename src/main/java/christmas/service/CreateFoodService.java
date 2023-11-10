@@ -4,19 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Map.Entry;
+import java.util.Objects;
 
 import christmas.domain.Food;
 import christmas.domain.Foods;
 import christmas.domain.Menu;
-import christmas.domain.VisitDate;
 
-public class CreateService {
-
-	public VisitDate createVisitDate(int day) {
-		return new VisitDate(day);
-	}
+public class CreateFoodService {
 
 	public Foods createFoods(String inputValue) {
 		Map<Food, Integer> foodCounter = countFood(inputValue);
