@@ -35,4 +35,8 @@ public class VisitDate {
 
 		return false;
 	}
+
+	public int getDay() {
+		return date.getDayOfMonth();
+	}
 }
