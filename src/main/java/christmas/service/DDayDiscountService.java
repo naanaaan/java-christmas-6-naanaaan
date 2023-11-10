@@ -8,7 +8,7 @@ public class DDayDiscountService {
 	private static final int MAX_DISCOUNT_AMOUNT = 2400;
 	private static final int D_DAY_BASIC_DISCOUNT_AMOUNT = 1000;
 
-	public int dDayDiscount(int day) {
+	public int discount(int day) {
 		int discountAmount = D_DAY_BASIC_DISCOUNT_AMOUNT + calculateAdditionalDiscount(day);
 
 		return -discountAmount;
