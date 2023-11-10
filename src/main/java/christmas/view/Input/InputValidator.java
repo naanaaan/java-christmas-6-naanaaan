@@ -2,10 +2,12 @@ package christmas.view.Input;
 
 import java.util.regex.Pattern;
 
+import christmas.service.ErrorMessage;
+
 public class InputValidator {
 
 	private static final Pattern ORDER_PATTERN = Pattern.compile("([가-힣]+)-([0-9]+)");
-	public static final Pattern NUMBER_FORMAT = Pattern.compile("^-?\\d+$");
+	private static final Pattern NUMBER_FORMAT = Pattern.compile("^-?\\d+$");
 
 	private InputValidator() {
 		throw new AssertionError();
@@ -13,19 +15,19 @@ public class InputValidator {
 
 	public static void validateOrderFormat(String inputValue) {
 		if (!ORDER_PATTERN.matcher(inputValue).matches()) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorMessage.ORDER_MENU.getMessage());
 		}
 	}
 
 	public static void validateNumberFormat(String inputValue) {
 		if (!NUMBER_FORMAT.matcher(inputValue).matches()) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorMessage.VISITDATE.getMessage());
 		}
 	}
 
 	public static void validateIsEmpty(String inputValue) {
 		if (isEmpty(inputValue)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("값이 비어있습니다");
 		}
 	}
 
