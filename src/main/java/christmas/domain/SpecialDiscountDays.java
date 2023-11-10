@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SpecialDiscountDays {
 
-	private static final List<Integer> DISCOUNT_DAYS = Arrays.asList(3, 10, 17, 24, 31, 25);
+	private static final List<Integer> DISCOUNT_DAYS = Arrays.asList(3, 10, 17, 24, 25, 31);
 
 	private SpecialDiscountDays() {
 		throw new AssertionError();
