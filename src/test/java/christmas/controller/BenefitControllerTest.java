@@ -54,4 +54,15 @@ public class BenefitControllerTest {
 
 		assertEquals(totalBenefitsAmount, 34469);
 	}
-}
+	
+	@DisplayName("총 혜택 금액을 확인한다4.")
+	@Test
+	void checktotalBenefitsAmount4() {
+		VisitDate visitDate = createController.getVisitDate(3);
+		Foods foods = createController.getFoods("초코케이크-1");
+		int totalOrderAmount = calculateController.getFoodsPriceSum(foods);
+		int totalBenefitsAmount = benefitController.getTotalBenefitsAmount(visitDate, foods, totalOrderAmount);
+
+		assertEquals(totalBenefitsAmount, 4223);
+	}
+}	
