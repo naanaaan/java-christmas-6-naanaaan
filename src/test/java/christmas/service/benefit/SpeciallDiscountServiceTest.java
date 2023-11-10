@@ -7,8 +7,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import christmas.service.benefit.SpecialDiscountService;
-
 public class SpeciallDiscountServiceTest {
 
 	private SpecialDiscountService specialDiscountService;
@@ -19,10 +17,10 @@ public class SpeciallDiscountServiceTest {
 	}
 
 	@DisplayName("특별 할인 날짜일 때 할인금액을 확인한다.")
-	@CsvSource(value = { "3,1000", "17,1000", "31,1000" }, delimiter = ',')
+	@CsvSource(value = { "3,-1000", "17,-1000", "31,-1000" }, delimiter = ',')
 	@ParameterizedTest
 	void checkDiscountAmount(int day, int expect) {
-		int discountAmount = specialDiscountService.discount(day);
+		int discountAmount = specialDiscountService.getBenefit(day).discountAmount();
 
 		assertEquals(discountAmount, expect);
 	}

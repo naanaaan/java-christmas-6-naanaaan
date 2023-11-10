@@ -1,18 +1,21 @@
 package christmas.service.benefit;
 
+import christmas.domain.Benefit;
+import christmas.domain.Event;
 import christmas.domain.SpecialDiscountDays;
 
 public class SpecialDiscountService {
 
+	private static final Event EVNET = Event.SPECIAL_DISCOUNT;
 	private static final int DISCOUNT_AMOUNT = 1_000;
 
-	public int discount(int day) {
+	public Benefit getBenefit(int day) {
 		int discountAmount = 0;
 
 		if (SpecialDiscountDays.isContain(day)) {
 			discountAmount = DISCOUNT_AMOUNT;
 		}
 
-		return discountAmount;
+		return new Benefit(EVNET, discountAmount * -1);
 	}
 }

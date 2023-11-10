@@ -12,7 +12,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import christmas.domain.Foods;
 import christmas.domain.Menu;
 import christmas.domain.VisitDate;
-import christmas.service.benefit.DayOfWeekDiscountService;
 
 class DayOfWeekDiscountServiceTest {
 
@@ -27,10 +26,10 @@ class DayOfWeekDiscountServiceTest {
 	}
 
 	@DisplayName("주간, 주말에 따른 할인 금액을 확인한다.")
-	@CsvSource(value = { "1,6069", "10,4046" }, delimiter=',')
+	@CsvSource(value = { "1,-6069", "10,-4046" }, delimiter=',')
 	@ParameterizedTest
 	void checkDiscountAmount(int day, int expect) {
-		int discountAmount = dayOfWeekDiscountService.discount(new VisitDate(day), foods);
+		int discountAmount = dayOfWeekDiscountService.getBenefit(new VisitDate(day), foods).discountAmount();
 
 		assertEquals(discountAmount, expect);
 	}

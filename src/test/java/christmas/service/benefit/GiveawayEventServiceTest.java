@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import christmas.domain.Food;
 import christmas.domain.Menu;
-import christmas.service.benefit.GiveawayEventService;
 
 public class GiveawayEventServiceTest {
 
@@ -24,19 +23,17 @@ public class GiveawayEventServiceTest {
 	@DisplayName("샴페인이 증정 상품인지와 그 갯수를 확인합니다.")
 	@Test
 	void test() {
-		List<Food> eventProducts = giveawayEventService.giveEventProduct();
+		List<Food> eventProducts = giveawayEventService.getGiveaways();
 
-		assertEquals(1, eventProducts.size());
+		assertEquals(eventProducts.size(), 1);
 		assertEquals(eventProducts.get(0), Menu.CHAMPAGNE.toFood());
 	}
 
 	@DisplayName("증정 상품들의 가격들의 합을 구한다.")
 	@Test
 	void calculateSumEventProductPrice_ShouldReturnCorrectSum() {
-		List<Food> eventProducts = giveawayEventService.giveEventProduct();
+		int discountAmount = giveawayEventService.getBenefit().discountAmount();
 
-		int sum = giveawayEventService.calculateSumEventProductPrice(eventProducts);
-
-		assertEquals(sum, 25000);
+		assertEquals(discountAmount, -25000);
 	}
 }
