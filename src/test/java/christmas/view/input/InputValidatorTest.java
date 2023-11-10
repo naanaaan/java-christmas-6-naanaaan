@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import christmas.service.ErrorMessage;
 import christmas.view.Input.InputValidator;
 
 public class InputValidatorTest {
@@ -15,7 +16,8 @@ public class InputValidatorTest {
 	@ParameterizedTest
 	void checkNumberFormat(String inputValue) {
 		assertThatThrownBy(() -> InputValidator.validateNumberFormat(inputValue))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(ErrorMessage.VISITDATE.getMessage());
 	}
 
 	@DisplayName("주문 형태(e.g. 해산물파스타-2,레드와인-1,초코케이크-1)가 아닐 때 예외처리한다.")
@@ -31,6 +33,7 @@ public class InputValidatorTest {
 	@ParameterizedTest
 	void test(String inputValue) {
 		assertThatThrownBy(() -> InputValidator.validateIsEmpty(inputValue))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(ErrorMessage.VISITDATE.getMessage());
 	}
 }
