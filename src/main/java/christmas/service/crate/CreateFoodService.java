@@ -1,4 +1,4 @@
-package christmas.service;
+package christmas.service.crate;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package christmas.service;
+package christmas.service.create;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -11,6 +11,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import christmas.domain.Foods;
+import christmas.service.crate.CreateFoodService;
 
 public class CreateFoodServiceTest {
 

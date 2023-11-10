@@ -1,4 +1,4 @@
-package christmas.service;
+package christmas.service.benefit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import christmas.service.benefit.SpecialDiscountService;
 
 public class SpeciallDiscountServiceTest {
 

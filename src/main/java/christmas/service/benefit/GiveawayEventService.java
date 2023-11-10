@@ -1,4 +1,4 @@
-package christmas.service;
+package christmas.service.benefit;
 
 import java.util.List;
 import java.util.stream.Stream;

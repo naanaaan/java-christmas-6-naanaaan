@@ -1,4 +1,4 @@
-package christmas.service;
+package christmas.service.crate;
 
 import christmas.domain.VisitDate;
 

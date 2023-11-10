@@ -1,4 +1,4 @@
-package christmas.service;
+package christmas.service.benefit;
 
 import christmas.domain.FoodCategory;
 import christmas.domain.Foods;

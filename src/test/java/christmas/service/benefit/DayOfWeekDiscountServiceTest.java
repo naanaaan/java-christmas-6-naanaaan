@@ -1,4 +1,4 @@
-package christmas.service;
+package christmas.service.benefit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import christmas.domain.Foods;
 import christmas.domain.Menu;
 import christmas.domain.VisitDate;
+import christmas.service.benefit.DayOfWeekDiscountService;
 
 class DayOfWeekDiscountServiceTest {
 

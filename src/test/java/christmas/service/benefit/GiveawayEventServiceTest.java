@@ -1,4 +1,4 @@
-package christmas.service;
+package christmas.service.benefit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import christmas.domain.Food;
 import christmas.domain.Menu;
+import christmas.service.benefit.GiveawayEventService;
 
 public class GiveawayEventServiceTest {
 
