@@ -35,7 +35,11 @@ public class Foods {
 	private boolean isOutOfRange(int size) {
 		return size > MAX_NUMBER || size < MIN_NUMBER;
 	}
-
+	
+	public int getFoodsSize() {
+		return foods.size();
+	}
+	
 	public List<Food> getFoods() {
 		return Collections.unmodifiableList(foods);
 	}

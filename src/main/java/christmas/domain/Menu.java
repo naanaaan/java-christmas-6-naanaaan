@@ -34,13 +34,17 @@ public enum Menu {
 		return Arrays.stream(values())
 				.anyMatch(menu -> menu.name.equals(name));
 	}
-	
+
+	public static Food getFoodByName(String name) {
+		return Arrays.stream(values())
+				.filter(menu -> menu.name.equals(name))
+				.findFirst()
+				.map(menu -> menu.toFood())
+				.orElse(null);
+	}
+
 	public Food toFood() {
 		return new Food(category, name, price);
-	}
-	
-	public FoodCategory getCategory() {
-		return category;
 	}
 
 	public String getName() {
