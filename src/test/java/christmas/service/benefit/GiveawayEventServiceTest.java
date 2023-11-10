@@ -37,6 +37,6 @@ public class GiveawayEventServiceTest {
 
 		int sum = giveawayEventService.calculateSumEventProductPrice(eventProducts);
 
-		assertEquals(sum, -2_5000);
+		assertEquals(sum, 25000);
 	}
 }

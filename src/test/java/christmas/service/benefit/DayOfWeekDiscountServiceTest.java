@@ -27,7 +27,7 @@ class DayOfWeekDiscountServiceTest {
 	}
 
 	@DisplayName("주간, 주말에 따른 할인 금액을 확인한다.")
-	@CsvSource(value = { "1,-6069", "10,-4046" }, delimiter=',')
+	@CsvSource(value = { "1,6069", "10,4046" }, delimiter=',')
 	@ParameterizedTest
 	void checkDiscountAmount(int day, int expect) {
 		int discountAmount = dayOfWeekDiscountService.discount(new VisitDate(day), foods);

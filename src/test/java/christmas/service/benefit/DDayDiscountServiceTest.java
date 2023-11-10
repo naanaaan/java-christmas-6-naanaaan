@@ -7,8 +7,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import christmas.service.benefit.DDayDiscountService;
-
 public class DDayDiscountServiceTest {
 	
 	private DDayDiscountService dDayDiscountService;
@@ -19,7 +17,7 @@ public class DDayDiscountServiceTest {
 	}
 	
 	@DisplayName("test")
-	@CsvSource(value = {"1,-1000", "26,-3400", "25, -3400", "20, -2900"}, delimiter = ',')
+	@CsvSource(value = {"1,1000", "26,3400", "25,3400", "20,2900"}, delimiter = ',')
 	@ParameterizedTest
 	void test(int day, int expect) {
 		int discountAmount = dDayDiscountService.discount(day);

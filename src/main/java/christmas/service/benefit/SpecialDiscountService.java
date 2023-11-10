@@ -13,6 +13,6 @@ public class SpecialDiscountService {
 			discountAmount = DISCOUNT_AMOUNT;
 		}
 
-		return discountAmount * -1;
+		return discountAmount;
 	}
 }

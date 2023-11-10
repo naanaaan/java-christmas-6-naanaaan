@@ -20,6 +20,6 @@ public class GiveawayEventService {
 	public int calculateSumEventProductPrice(List<Food> eventProducts) {
 		return eventProducts.stream()
 				.mapToInt(food -> food.price())
-				.sum() * -1;
+				.sum();
 	}
 }

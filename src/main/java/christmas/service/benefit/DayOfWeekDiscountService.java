@@ -21,6 +21,6 @@ public class DayOfWeekDiscountService {
 			foodCount = foods.countFoodsByCategory(WEEKDAY_DISCOUNT_ELIGIBLE);
 		}
 
-		return -(foodCount * DISCOUNT_AMOUNT);
+		return foodCount * DISCOUNT_AMOUNT;
 	}
 }

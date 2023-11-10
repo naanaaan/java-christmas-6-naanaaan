@@ -11,7 +11,7 @@ public class DDayDiscountService {
 	public int discount(int day) {
 		int discountAmount = D_DAY_BASIC_DISCOUNT_AMOUNT + calculateAdditionalDiscount(day);
 
-		return discountAmount * -1;
+		return discountAmount;
 	}
 
 	private int calculateAdditionalDiscount(int day) {
