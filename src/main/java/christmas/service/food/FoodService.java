@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
+import java.util.Optional;
 
 import christmas.domain.Food;
 import christmas.domain.Foods;
@@ -45,14 +46,17 @@ public class FoodService {
 	}
 
 	private void putFoodExcluingNullValue(Map<Food, Integer> foodCounter, String foodName, int number) {
-		Food food = Menu.getFoodByName(foodName);
+		Optional<Menu> menu = Menu.getMenuByName(foodName);
 
-		if (Objects.nonNull(food)) {
+		if (menu.isPresent()) {
+			Food food = menu.get().toFood();
 			foodCounter.put(food, number);
 		}
 	}
 
 	public int calculateFoodsPriceSum(Foods foods) {
-		return foods.getFoods().stream().mapToInt(food -> food.price()).sum();
+		return foods.getFoods().stream()
+				.mapToInt(food -> food.price())
+				.sum();
 	}
 }

@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 public enum Menu {
 
@@ -35,12 +36,10 @@ public enum Menu {
 				.anyMatch(menu -> menu.name.equals(name));
 	}
 
-	public static Food getFoodByName(String name) {
-		return Arrays.stream(values())
-				.filter(menu -> menu.name.equals(name))
-				.findFirst()
-				.map(menu -> menu.toFood())
-				.orElse(null);
+	public static Optional<Menu> getMenuByName(String name) {
+	    return Arrays.stream(values())
+	            .filter(menu -> menu.name.equals(name))
+	            .findFirst();
 	}
 
 	public Food toFood() {
@@ -50,7 +49,7 @@ public enum Menu {
 	public String getName() {
 		return name;
 	}
-
+	
 	public int getPrice() {
 		return price;
 	}
