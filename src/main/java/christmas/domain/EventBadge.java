@@ -1,13 +1,13 @@
 package christmas.domain;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 public enum EventBadge {
 
 	SANTA(20000, "산타"), 
 	TREE(10000, "트리"), 
-	STAR(5000, "별"), 
-	NOTHING(0, "없음");
+	STAR(5000, "별");
 
 	private final int minTotalBenefitsPrice;
 	private final String badgeName;
@@ -17,11 +17,10 @@ public enum EventBadge {
 		this.badgeName = badgeName;
 	}
 
-	public static EventBadge getBadgeByTotalBenefitsPrice(int totalBenefitsPrice) {
+	public static Optional<EventBadge> getBadgeByTotalBenefitsPrice(int totalBenefitsPrice) {
 		return Arrays.stream(values())	
 				.filter(badge -> Math.abs(totalBenefitsPrice) >= badge.minTotalBenefitsPrice)
-				.findFirst()
-				.orElse(NOTHING);
+				.findFirst();
 	}
 
 	public Badge tobadge() {

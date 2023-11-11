@@ -1,6 +1,8 @@
 package christmas.controller;
 
-import christmas.domain.Badge;
+import java.util.Optional;
+
+import christmas.domain.EventBadge;
 import christmas.service.badge.BadgeService;
 
 public class BadgeController {
@@ -11,7 +13,7 @@ public class BadgeController {
 		this.badgeService = new BadgeService();
 	}
 
-	public Badge getBadge(int totalBenefitsAmount) {
+	public Optional<EventBadge> getBadge(int totalBenefitsAmount) {
 		return badgeService.getBadgeByTotalBenefitsPrice(totalBenefitsAmount);
 	}
 }
