@@ -1,23 +1,19 @@
 package christmas.domain;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class FoodTest {
 
-	@DisplayName("메뉴에 없는 음식을 생성할 때 예외가 발생한다.")
+	@DisplayName("음식의 카테고리를 확인한다..")
 	@Test
-	void crateFoodByNonexistentMenu() {
-		assertThatThrownBy(() -> new Food(FoodCategory.APPETIZER, "에피타이저", 2000))
-				.isInstanceOf(IllegalArgumentException.class);
-	}
+	void checkFoodCategory() {
+		Food food = new Food(FoodCategory.APPETIZER, "에피타이저", 2000);
 
-	@DisplayName("메뉴에 있는 음식을 생성할 때 정상 작동한다.")
-	@Test
-	void checkNomalOperation1() {
-		assertDoesNotThrow(() -> Menu.BBQ_RIBS.toFood());
+		assertTrue(food.checkCategory(FoodCategory.APPETIZER));
+		assertFalse(food.checkCategory(FoodCategory.MAIN));
 	}
 }
