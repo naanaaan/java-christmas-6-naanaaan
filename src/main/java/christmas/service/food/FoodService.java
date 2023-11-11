@@ -9,7 +9,7 @@ import java.util.Optional;
 
 import christmas.domain.food.Food;
 import christmas.domain.food.Foods;
-import christmas.domain.food.Menu;
+import christmas.domain.food.FoodMenu;
 
 public class FoodService {
 
@@ -45,7 +45,7 @@ public class FoodService {
 	}
 
 	private void putFoodExcluingNullValue(Map<Food, Integer> foodCounter, String foodName, int number) {
-		Optional<Menu> menu = Menu.getMenuByName(foodName);
+		Optional<FoodMenu> menu = FoodMenu.getMenuByName(foodName);
 
 		if (menu.isPresent()) {
 			Food food = menu.get().toFood();

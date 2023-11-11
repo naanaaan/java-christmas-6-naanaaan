@@ -3,7 +3,7 @@ package christmas.view.Input;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import christmas.domain.food.Menu;
+import christmas.domain.food.FoodMenu;
 import christmas.util.ErrorMessage;
 
 public class InputValidator {
@@ -23,7 +23,7 @@ public class InputValidator {
 	}
 
 	public static void validateValidFoodName(String inputValue) {
-		if (!Menu.checkByName(inputValue)) {
+		if (!FoodMenu.checkByName(inputValue)) {
 			throw new IllegalArgumentException(ErrorMessage.VALID_ORDER_MENU.getMessage());
 		}
 	}

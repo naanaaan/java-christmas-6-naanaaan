@@ -19,7 +19,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import christmas.domain.food.Food;
 import christmas.domain.food.FoodCategory;
 import christmas.domain.food.Foods;
-import christmas.domain.food.Menu;
+import christmas.domain.food.FoodMenu;
 import christmas.util.ErrorMessage;
 
 public class FoodsTest {
@@ -35,7 +35,7 @@ public class FoodsTest {
 
 	static Stream<Arguments> createCreateFoodByOverSizeMethodParameter() {
 		List<Food> size0Foods = new ArrayList<>();
-		List<Food> size21Foods = generateFoods(Menu.BBQ_RIBS, 21);
+		List<Food> size21Foods = generateFoods(FoodMenu.BBQ_RIBS, 21);
 
 		return Stream.of(Arguments.of(size0Foods), Arguments.of(size21Foods));
 	}
@@ -48,8 +48,8 @@ public class FoodsTest {
 	}
 
 	static Stream<Arguments> createCheckNomalOperation1Parameter() {
-		List<Food> size1Foods = new ArrayList<>(List.of(Menu.BBQ_RIBS.toFood()));
-		List<Food> size19Foods = generateFoods(Menu.BBQ_RIBS, 19);
+		List<Food> size1Foods = new ArrayList<>(List.of(FoodMenu.BBQ_RIBS.toFood()));
+		List<Food> size19Foods = generateFoods(FoodMenu.BBQ_RIBS, 19);
 
 		return Stream.of(Arguments.of(size1Foods), Arguments.of(size19Foods));
 	}
@@ -64,8 +64,8 @@ public class FoodsTest {
 	}
 
 	static Stream<Arguments> createCreateFoodByOnlyBeverageMethodParameter() {
-		List<Food> onlyBeverages1 = generateFoods(Menu.ZERO_COLA, 2);
-		List<Food> onlyBeverages2 = generateFoods(Menu.RED_WINE, 10);
+		List<Food> onlyBeverages1 = generateFoods(FoodMenu.ZERO_COLA, 2);
+		List<Food> onlyBeverages2 = generateFoods(FoodMenu.RED_WINE, 10);
 
 		return Stream.of(Arguments.of(onlyBeverages1), Arguments.of(onlyBeverages2));
 	}
@@ -78,13 +78,13 @@ public class FoodsTest {
 	}
 
 	static Stream<Arguments> createCheckNomalOperation2Parameter() {
-		List<Food> foods1 = generateFoods(Menu.BBQ_RIBS, 2);
-		List<Food> foods2 = generateFoods(Menu.CAESAR_SALAD, 10);
+		List<Food> foods1 = generateFoods(FoodMenu.BBQ_RIBS, 2);
+		List<Food> foods2 = generateFoods(FoodMenu.CAESAR_SALAD, 10);
 
 		return Stream.of(Arguments.of(foods1), Arguments.of(foods2));
 	}
 
-	private static List<Food> generateFoods(Menu menu, int limitNumber) {
+	private static List<Food> generateFoods(FoodMenu menu, int limitNumber) {
 		return Stream.generate(() -> menu.toFood()).limit(limitNumber).toList();
 	}
 	

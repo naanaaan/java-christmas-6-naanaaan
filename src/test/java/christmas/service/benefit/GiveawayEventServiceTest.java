@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import christmas.domain.food.Food;
-import christmas.domain.food.Menu;
+import christmas.domain.food.FoodMenu;
 
 public class GiveawayEventServiceTest {
 
@@ -23,6 +23,6 @@ public class GiveawayEventServiceTest {
 	void checkGiveaway() {
 		Food giveaway = giveawayEventService.getGiveaway();
 
-		assertEquals(giveaway, Menu.CHAMPAGNE.toFood());
+		assertEquals(giveaway, FoodMenu.CHAMPAGNE.toFood());
 	}
 }

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import christmas.domain.food.FoodCategory;
 import christmas.domain.food.Foods;
-import christmas.domain.food.Menu;
+import christmas.domain.food.FoodMenu;
 
 public class FoodServiceTest {
 	private FoodService foodService;
@@ -19,7 +19,7 @@ public class FoodServiceTest {
 	@BeforeEach
 	void setup() {
 		foodService = new FoodService();
-		foods = new Foods(List.of(Menu.BBQ_RIBS.toFood(), Menu.CHAMPAGNE.toFood(), Menu.CHRISTMAS_PASTA.toFood()));
+		foods = new Foods(List.of(FoodMenu.BBQ_RIBS.toFood(), FoodMenu.CHAMPAGNE.toFood(), FoodMenu.CHRISTMAS_PASTA.toFood()));
 	}
 
 	@DisplayName("입력값에 따라 생성되는 음식들을 확인한다.")

@@ -6,10 +6,10 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.StringJoiner;
 
-import christmas.domain.Benefit;
-import christmas.domain.EventBadge;
-import christmas.domain.Food;
-import christmas.domain.VisitDate;
+import christmas.domain.badge.EventBadge;
+import christmas.domain.benefit.Benefit;
+import christmas.domain.food.Food;
+import christmas.domain.visitDate.VisitDate;
 
 public class OutputView {
 

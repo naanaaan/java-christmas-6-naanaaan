@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import christmas.domain.benefit.Benefit;
 import christmas.domain.benefit.DecemberEvent;
 import christmas.domain.food.Food;
-import christmas.domain.food.Menu;
+import christmas.domain.food.FoodMenu;
 
 class CalculateBenefitServiceTest {
 
@@ -31,7 +31,7 @@ class CalculateBenefitServiceTest {
 		Benefit dDayBenefit = new Benefit(DecemberEvent.DDAY_DISCOUNT, dDay);
 		Benefit weekendBenefit = new Benefit(DecemberEvent.WEEKEND_DISCOUNT, weekend);
 		Benefit specialBenefit = new Benefit(DecemberEvent.SPECIAL_DISCOUNT, special);
-		Benefit giveawayBenefit = new Benefit(DecemberEvent.GIVEAWAY_EVENT, Menu.CHAMPAGNE.getPrice() * -1);
+		Benefit giveawayBenefit = new Benefit(DecemberEvent.GIVEAWAY_EVENT, FoodMenu.CHAMPAGNE.getPrice() * -1);
 
 		int totalDiscountAmount = calculateBenefitService
 				.calculateTotalDiscountAmount(List.of(dDayBenefit, weekendBenefit, specialBenefit, giveawayBenefit));
@@ -46,7 +46,7 @@ class CalculateBenefitServiceTest {
 		Food giveaway = null;
 
 		if (totalOrderAmount >= 120000) {
-			giveaway = Menu.CHAMPAGNE.toFood();
+			giveaway = FoodMenu.CHAMPAGNE.toFood();
 		}
 
 		int actualTotalBenefitAmount = calculateBenefitService

@@ -10,7 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import christmas.domain.food.Foods;
-import christmas.domain.food.Menu;
+import christmas.domain.food.FoodMenu;
 import christmas.domain.visitDate.VisitDate;
 
 class DayOfWeekDiscountServiceTest {
@@ -21,8 +21,8 @@ class DayOfWeekDiscountServiceTest {
 	@BeforeEach
 	void setUp() {
 		dayOfWeekDiscountService = new DayOfWeekDiscountService();
-		foods = new Foods(List.of(Menu.BBQ_RIBS.toFood(), Menu.T_BONE_STEAK.toFood(), Menu.SEAFOOD_PASTA.toFood(),
-				Menu.CHOCO_CAKE.toFood(), Menu.ICE_CREAM.toFood()));
+		foods = new Foods(List.of(FoodMenu.BBQ_RIBS.toFood(), FoodMenu.T_BONE_STEAK.toFood(), FoodMenu.SEAFOOD_PASTA.toFood(),
+				FoodMenu.CHOCO_CAKE.toFood(), FoodMenu.ICE_CREAM.toFood()));
 	}
 
 	@DisplayName("주간, 주말에 따른 할인 금액을 확인한다.")

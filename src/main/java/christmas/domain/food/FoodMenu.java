@@ -3,7 +3,7 @@ package christmas.domain.food;
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum Menu {
+public enum FoodMenu {
 
 	MUSHROOM_SOUP(FoodCategory.APPETIZER, "양송이수프", 6_000),
 	TAPAS(FoodCategory.APPETIZER, "타파스", 5_500),
@@ -25,7 +25,7 @@ public enum Menu {
 	private final String name;
 	private final int price;
 
-	Menu(FoodCategory category, String name, int price) {
+	FoodMenu(FoodCategory category, String name, int price) {
 		this.category = category;
 		this.name = name;
 		this.price = price;
@@ -36,7 +36,7 @@ public enum Menu {
 				.anyMatch(menu -> menu.name.equals(name));
 	}
 
-	public static Optional<Menu> getMenuByName(String name) {
+	public static Optional<FoodMenu> getMenuByName(String name) {
 	    return Arrays.stream(values())
 	            .filter(menu -> menu.name.equals(name))
 	            .findFirst();

@@ -7,11 +7,11 @@ import christmas.controller.BadgeController;
 import christmas.controller.BenefitController;
 import christmas.controller.FoodController;
 import christmas.controller.VisitDateController;
-import christmas.domain.Benefit;
-import christmas.domain.EventBadge;
-import christmas.domain.Food;
-import christmas.domain.Foods;
-import christmas.domain.VisitDate;
+import christmas.domain.badge.EventBadge;
+import christmas.domain.benefit.Benefit;
+import christmas.domain.food.Food;
+import christmas.domain.food.Foods;
+import christmas.domain.visitDate.VisitDate;
 import christmas.view.Input.InputView;
 import christmas.view.output.OutputView;
 
