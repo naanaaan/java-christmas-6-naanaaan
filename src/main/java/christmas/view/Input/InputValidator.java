@@ -1,12 +1,15 @@
 package christmas.view.Input;
 
+import java.util.Set;
 import java.util.regex.Pattern;
 
+import christmas.domain.Menu;
 import christmas.service.ErrorMessage;
 
 public class InputValidator {
 
-	private static final Pattern ORDER_PATTERN = Pattern.compile("([가-힣]+)-([0-9]+)");
+	private static final Pattern ORDER_FORMAT = Pattern.compile(
+			"^([가-힣]+)-([1-9]\\d*)" + "(,([가-힣]+)-([1-9]\\d*))*$");
 	private static final Pattern NUMBER_FORMAT = Pattern.compile("^-?\\d+$");
 
 	private InputValidator() {
@@ -14,9 +17,22 @@ public class InputValidator {
 	}
 
 	public static void validateOrderFormat(String inputValue) {
-		if (!ORDER_PATTERN.matcher(inputValue).matches()) {
+		if (!ORDER_FORMAT.matcher(inputValue).matches()) {
 			throw new IllegalArgumentException(ErrorMessage.ORDER_MENU.getMessage());
 		}
+	}
+
+	public static void validateValidFoodName(String inputValue) {
+		if (!Menu.checkByName(inputValue)) {
+			throw new IllegalArgumentException(ErrorMessage.ORDER_MENU.getMessage());
+		}
+	}
+
+	public static void validateDuplicateFoodName(Set<String> checker, String foodName) {
+		if (!checker.add(foodName)) {
+			throw new IllegalArgumentException(ErrorMessage.ORDER_MENU.getMessage());
+		}
+
 	}
 
 	public static void validateNumberFormat(String inputValue) {

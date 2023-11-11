@@ -1,6 +1,10 @@
 package christmas.view.Input;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import camp.nextstep.edu.missionutils.Console;
+import christmas.service.ErrorMessage;
 
 public class InputView {
 
@@ -9,7 +13,7 @@ public class InputView {
 
 		String inputValue = Console.readLine();
 
-		validateVisitDate(inputValue);
+		validateInputVisitDate(inputValue);
 
 		return Integer.parseInt(inputValue);
 	}
@@ -18,20 +22,32 @@ public class InputView {
 		System.out.println(InputMessage.INPUT_MENUS.getMessage());
 
 		String inputValue = Console.readLine();
-		String[] test = inputValue.split(",");
-		for (String value : test) {
-			validateMenus(value);
-		}
+
+		validateInputMenus(inputValue);
 
 		return inputValue;
 	}
 
-	private void validateVisitDate(String inputValue) {
+	private void validateInputVisitDate(String inputValue) {
 		InputValidator.validateIsEmpty(inputValue);
 		InputValidator.validateNumberFormat(inputValue);
 	}
 
-	private void validateMenus(String inputValue) {
+	private void validateInputMenus(String inputValue) {
+		Set<String> duplicateChecker = new HashSet<>();
+
 		InputValidator.validateOrderFormat(inputValue);
+
+		String[] separetedValue = inputValue.split(",");
+
+		for (String foodNameAndNumbers : separetedValue) {
+			String[] foodNameAndNumber = foodNameAndNumbers.split("-");
+			validateFoodName(duplicateChecker, foodNameAndNumber[0]);
+		}
+	}
+
+	private void validateFoodName(Set<String> duplicateChecker, String foodName) {
+		InputValidator.validateValidFoodName(foodName);
+		InputValidator.validateDuplicateFoodName(duplicateChecker, foodName);
 	}
 }
