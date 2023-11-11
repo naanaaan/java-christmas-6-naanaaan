@@ -39,9 +39,9 @@ public class OutputView {
 		System.out.println(NEW_LINE + orderMenuMessage.toString());
 	}
 
-	public void printTotalOrderAmountBeforeDiscount(int totalOrderPrice) {
+	public void printTotalOrderPriceBeforeDiscount(int totalOrderPrice) {
 		StringJoiner beforeDiscountMessage = new StringJoiner(NEW_LINE);
-		beforeDiscountMessage.add(OutputViewMessage.TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT.getMessage());
+		beforeDiscountMessage.add(OutputViewMessage.TOTAL_ORDER_PRICE_BEFORE_DISCOUNT.getMessage());
 		beforeDiscountMessage.add(String.format("%,d원", totalOrderPrice));
 
 		System.out.println(NEW_LINE + beforeDiscountMessage.toString());
@@ -84,25 +84,25 @@ public class OutputView {
 		benefitDetailsMessage.add(OutputViewMessage.BENEFIT_DETAILS.getMessage());
 		for (Benefit benefit : benefits) {
 			String benefitEventName = benefit.event().getName();
-			int discountAmount = benefit.discountAmount();
+			int discountPrice = benefit.discountPrice();
 
-			benefitDetailsMessage.add(String.format("%s : %,d원", benefitEventName, discountAmount));
+			benefitDetailsMessage.add(String.format("%s : %,d원", benefitEventName, discountPrice));
 		}
 	}
 
-	public void printTotalBenefitsAmount(int totalBenefitsAmount) {
-		StringJoiner benefitsAmountMessage = new StringJoiner(NEW_LINE);
+	public void printTotalBenefitsPrice(int totalBenefitsPrice) {
+		StringJoiner benefitsPrcieMessage = new StringJoiner(NEW_LINE);
 
-		benefitsAmountMessage.add(OutputViewMessage.TOTAL_BENEFITS_AMOUNT.getMessage());
-		benefitsAmountMessage.add(String.format("%,d원", totalBenefitsAmount));
+		benefitsPrcieMessage.add(OutputViewMessage.TOTAL_BENEFITS_PRICE.getMessage());
+		benefitsPrcieMessage.add(String.format("%,d원", totalBenefitsPrice));
 
-		System.out.println(NEW_LINE + benefitsAmountMessage.toString());
+		System.out.println(NEW_LINE + benefitsPrcieMessage.toString());
 	}
 
-	public void printTotalPaymentAmountAfterDiscount(int totalPayment) {
+	public void printTotalPaymentPriceAfterDiscount(int totalPayment) {
 		StringJoiner totalPaymentMessage = new StringJoiner(NEW_LINE);
 
-		totalPaymentMessage.add(OutputViewMessage.TOTAL_PAYMENT_AMOUNT_AFTER_DISCOUNT.getMessage());
+		totalPaymentMessage.add(OutputViewMessage.TOTAL_PAYMENT_PRICE_AFTER_DISCOUNT.getMessage());
 		totalPaymentMessage.add(String.format("%,d원", totalPayment));
 
 		System.out.println(NEW_LINE + totalPaymentMessage.toString());

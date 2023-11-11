@@ -11,9 +11,9 @@ public class GiveawayEventService {
 	private static final Menu GITVEAWAY = Menu.CHAMPAGNE;
 
 	public Benefit getBenefit() {
-		int discountAmount = GITVEAWAY.getPrice();
+		int discountPrice = GITVEAWAY.getPrice();
 
-		return new Benefit(EVENT, discountAmount * -1);
+		return new Benefit(EVENT, discountPrice * -1);
 	}
 
 	public Food getGiveaway() {

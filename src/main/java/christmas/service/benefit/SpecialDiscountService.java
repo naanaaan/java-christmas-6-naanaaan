@@ -7,15 +7,15 @@ import christmas.domain.SpecialDiscountDays;
 public class SpecialDiscountService {
 
 	private static final Event EVNET = Event.SPECIAL_DISCOUNT;
-	private static final int DISCOUNT_AMOUNT = 1_000;
+	private static final int DISCOUNT_PRICE = 1_000;
 
 	public Benefit getBenefit(int day) {
-		int discountAmount = 0;
+		int discountPrice = 0;
 
 		if (SpecialDiscountDays.isContain(day)) {
-			discountAmount = DISCOUNT_AMOUNT;
+			discountPrice = DISCOUNT_PRICE;
 		}
 
-		return new Benefit(EVNET, discountAmount * -1);
+		return new Benefit(EVNET, discountPrice * -1);
 	}
 }

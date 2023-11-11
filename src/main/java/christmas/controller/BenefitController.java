@@ -33,20 +33,20 @@ public class BenefitController {
 		this.calcualteBenefitService = new CalcualteBenefitService();
 	}
 
-	public List<Benefit> getBenefits(VisitDate visitDate, Foods foods, int totalOrderAmount) {
+	public List<Benefit> getBenefits(VisitDate visitDate, Foods foods, int totalOrderPrice) {
 		List<Benefit> benefits = new ArrayList<>();
 		int day = visitDate.getDay();
 
-		if (totalOrderAmount > DISCOUT_CONDITION) {
+		if (totalOrderPrice > DISCOUT_CONDITION) {
 			benefits.add(getDayOfWeekBenefit(visitDate, foods));
 			benefits.add(getDDayBenefit(day));
 			benefits.add(getSpecialBenefit(day));
 		}
-		if (totalOrderAmount > GIVEAWAY_CONDITION) {
+		if (totalOrderPrice > GIVEAWAY_CONDITION) {
 			benefits.add(getGiveawayBenefit());
 		}
 
-		return new Benefits(benefits).getNotZeroDiscountAmount();
+		return new Benefits(benefits).getNotZeroDiscountPrice();
 	}
 
 	private Benefit getDayOfWeekBenefit(VisitDate visitDate, Foods foods) {
@@ -65,14 +65,18 @@ public class BenefitController {
 		return specialDiscountService.getBenefit(day);
 	}
 
-	public Food getGiveaways(int totalOrderAmount) {
-		if (totalOrderAmount > GIVEAWAY_CONDITION) {
+	public Food getGiveaways(int totalOrderPrice) {
+		if (totalOrderPrice > GIVEAWAY_CONDITION) {
 			return giveawayEventService.getGiveaway();
 		}
 		return null;
 	}
 
-	public int getBenefitDiscountAmountSum(List<Benefit> benefits) {
-		return calcualteBenefitService.calcualteBenefitDiscountAmountSum(benefits);
+	public int getTotalDiscountPrice(List<Benefit> benefits) {
+		return calcualteBenefitService.calculateTotalDiscountPrice(benefits);
+	}
+	
+	public int getTotalBenefitPrice(int totalDiscountPrice, Food giveaway) {
+		return calcualteBenefitService.calculateTotalBenefitPrice(totalDiscountPrice, giveaway);
 	}
 }

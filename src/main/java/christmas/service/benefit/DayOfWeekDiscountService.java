@@ -1,7 +1,5 @@
 package christmas.service.benefit;
 
-import java.util.List;
-
 import christmas.domain.Benefit;
 import christmas.domain.Event;
 import christmas.domain.FoodCategory;
@@ -14,7 +12,7 @@ public class DayOfWeekDiscountService {
 	private static final Event WEEKDAY_EVENT = Event.WEEKDAY_DISCOUNT;
 	private static final FoodCategory WEEKEND_DISCOUNT_ELIGIBLE = FoodCategory.MAIN;
 	private static final FoodCategory WEEKDAY_DISCOUNT_ELIGIBLE = FoodCategory.DESSERT;
-	private static final int DISCOUNT_AMOUNT = 2_023;
+	private static final int DISCOUNT_PRICE = 2_023;
 
 	public Benefit getBenefit(VisitDate visitDate, Foods foods) {
 		int foodCount = 0;
@@ -30,6 +28,6 @@ public class DayOfWeekDiscountService {
 			event = WEEKDAY_EVENT;
 		}
 
-		return new Benefit(event, foodCount * DISCOUNT_AMOUNT * -1);
+		return new Benefit(event, foodCount * DISCOUNT_PRICE * -1);
 	}
 }

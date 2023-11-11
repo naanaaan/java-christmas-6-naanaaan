@@ -9,17 +9,17 @@ public enum EventBadge {
 	STAR(5000, "별"), 
 	NOTHING(0, "없음");
 
-	private final int minTotalBenefitsAmount;
+	private final int minTotalBenefitsPrice;
 	private final String badgeName;
 
-	EventBadge(int minTotalBenefitsAmount, String badgeName) {
-		this.minTotalBenefitsAmount = minTotalBenefitsAmount;
+	EventBadge(int minTotalBenefitsPrice, String badgeName) {
+		this.minTotalBenefitsPrice = minTotalBenefitsPrice;
 		this.badgeName = badgeName;
 	}
 
-	public static EventBadge getBadgeByTotalBenefitsAmount(int totalBenefitsAmount) {
+	public static EventBadge getBadgeByTotalBenefitsPrice(int totalBenefitsPrice) {
 		return Arrays.stream(values())
-				.filter(badge -> totalBenefitsAmount >= badge.minTotalBenefitsAmount)
+				.filter(badge -> totalBenefitsPrice >= badge.minTotalBenefitsPrice)
 				.findFirst()
 				.orElse(NOTHING);
 	}
