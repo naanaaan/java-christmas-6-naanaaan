@@ -14,17 +14,17 @@ public class CalcualteBenefitService {
 				.mapToInt(benefit -> benefit.benefitAmount()).sum();
 	}
 
-	public int calculateTotalBenefitAmount(int totalDiscountPrice, Food giveaway) {
-		int gitveawayBenefitPrice = 0;
+	public int calculateTotalBenefitAmount(int totalDiscountAmount, Food giveaway) {
+		int giveawayPrice = 0;
 
 		if (Objects.nonNull(giveaway)) {
-			gitveawayBenefitPrice = giveaway.price() * -1;
+			giveawayPrice = giveaway.price() * -1;
 		}
 
-		return totalDiscountPrice + gitveawayBenefitPrice;
+		return totalDiscountAmount + giveawayPrice;
 	}
 
-	public int cacluclateTotalPaymentAmount(int totalOrderPrice, int totalDiscountPrice) {
-		return totalOrderPrice + totalDiscountPrice;
+	public int cacluclateTotalPaymentAmount(int totalOrderAmount, int totalDiscountAmount) {
+		return totalOrderAmount + totalDiscountAmount;
 	}
 }
