@@ -1,6 +1,6 @@
 package christmas.service.visitDate;
 
-import christmas.domain.VisitDate;
+import christmas.domain.visitDate.VisitDate;
 
 public class VisitDateService {
 

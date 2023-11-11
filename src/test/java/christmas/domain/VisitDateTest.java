@@ -9,6 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import christmas.domain.visitDate.VisitDate;
 import christmas.util.ErrorMessage;
 
 public class VisitDateTest {

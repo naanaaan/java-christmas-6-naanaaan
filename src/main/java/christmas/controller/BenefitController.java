@@ -5,9 +5,9 @@ import java.util.List;
 
 import christmas.domain.Food;
 import christmas.domain.Foods;
-import christmas.domain.VisitDate;
 import christmas.domain.benefit.Benefit;
 import christmas.domain.benefit.Benefits;
+import christmas.domain.visitDate.VisitDate;
 import christmas.service.benefit.CalculateBenefitService;
 import christmas.service.benefit.DDayDiscountService;
 import christmas.service.benefit.DayOfWeekDiscountService;

@@ -1,6 +1,6 @@
 package christmas.controller;
 
-import christmas.domain.VisitDate;
+import christmas.domain.visitDate.VisitDate;
 import christmas.service.visitDate.VisitDateService;
 
 public class VisitDateController {

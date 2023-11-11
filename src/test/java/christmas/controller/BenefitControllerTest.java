@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import christmas.domain.Food;
 import christmas.domain.Foods;
-import christmas.domain.VisitDate;
 import christmas.domain.benefit.Benefit;
+import christmas.domain.visitDate.VisitDate;
 
 public class BenefitControllerTest {
 

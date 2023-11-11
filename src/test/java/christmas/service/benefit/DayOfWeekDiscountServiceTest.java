@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import christmas.domain.Foods;
 import christmas.domain.Menu;
-import christmas.domain.VisitDate;
+import christmas.domain.visitDate.VisitDate;
 
 class DayOfWeekDiscountServiceTest {
 
