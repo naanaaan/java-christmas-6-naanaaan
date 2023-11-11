@@ -65,9 +65,9 @@ public class BenefitController {
 		return specialDiscountService.getBenefit(day);
 	}
 
-	public List<Food> getGiveaways(int totalOrderAmount) {
+	public Food getGiveaways(int totalOrderAmount) {
 		if (totalOrderAmount > GIVEAWAY_CONDITION) {
-			return giveawayEventService.getGiveaways();
+			return giveawayEventService.getGiveaway();
 		}
 		return null;
 	}
