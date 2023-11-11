@@ -12,7 +12,7 @@ public class Benefits {
 
 	public List<Benefit> getNotZeroDiscountAmount() {
 		return benefits.stream()
-				.filter(benefit -> benefit.benefitAmount() != 0)
+				.filter(benefit -> benefit.checkNotZeroDiscountAmount())
 				.toList();
 	}
 }
