@@ -36,13 +36,13 @@ public class BenefitController {
 	public List<Benefit> getBenefits(VisitDate visitDate, Foods foods, int totalOrderAmount) {
 		List<Benefit> benefits = new ArrayList<>();
 		int day = visitDate.getDay();
-
-		if (totalOrderAmount > DISCOUT_CONDITION) {
+		
+		if (totalOrderAmount >= DISCOUT_CONDITION) {
 			benefits.add(getDayOfWeekBenefit(visitDate, foods));
 			benefits.add(getDDayBenefit(day));
 			benefits.add(getSpecialBenefit(day));
 		}
-		if (totalOrderAmount > GIVEAWAY_CONDITION) {
+		if (totalOrderAmount >= GIVEAWAY_CONDITION) {
 			benefits.add(getGiveawayBenefit());
 		}
 
@@ -66,7 +66,7 @@ public class BenefitController {
 	}
 
 	public Food getGiveaways(int totalOrderAmount) {
-		if (totalOrderAmount > GIVEAWAY_CONDITION) {
+		if (totalOrderAmount >= GIVEAWAY_CONDITION) {
 			return giveawayEventService.getGiveaway();
 		}
 		return null;
