@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.StringJoiner;
 
+import christmas.domain.Badge;
 import christmas.domain.Benefit;
 import christmas.domain.Food;
 import christmas.domain.VisitDate;
@@ -97,13 +98,22 @@ public class OutputView {
 
 		System.out.println(NEW_LINE + benefitsAmountMessage.toString());
 	}
-	
+
 	public void printTotalPaymentAmountAfterDiscount(int totalPayment) {
 		StringJoiner totalPaymentMessage = new StringJoiner(NEW_LINE);
-		
+
 		totalPaymentMessage.add(OutputViewMessage.TOTAL_PAYMENT_AMOUNT_AFTER_DISCOUNT.getMessage());
 		totalPaymentMessage.add(String.format("%,d원", totalPayment));
 
 		System.out.println(NEW_LINE + totalPaymentMessage.toString());
+	}
+
+	public void printEventBadge(Badge badge) {
+		StringJoiner eventBadgeMessage = new StringJoiner(NEW_LINE);
+
+		eventBadgeMessage.add(OutputViewMessage.EVENT_BADGE.getMessage());
+		eventBadgeMessage.add(badge.badgeName());
+
+		System.out.println(NEW_LINE + eventBadgeMessage.toString());
 	}
 }
