@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import christmas.domain.Benefit;
+import christmas.domain.Food;
 import christmas.domain.Foods;
 import christmas.domain.VisitDate;
 
@@ -25,51 +26,71 @@ public class BenefitControllerTest {
 		foodController = new FoodController();
 	}
 
-	@DisplayName("총 혜택 금액을 확인한다1.")
+	@DisplayName("총 할인, 혜택, 결제금액들을 확인한다1.")
 	@Test
-	void checktotalBenefitsAmount1() {
+	void checkTotalDiscountAmountAndTotalBenefitAmountAndTotalPaymentAmount1() {
 		VisitDate visitDate = visitDateController.getVisitDate(3);
 		Foods foods = foodController.getFoods("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
-		int totalOrderAmount = foodController.getFoodsPriceSum(foods);
+		int totalOrderAmount = foodController.getTotalOrderAmount(foods);
 		List<Benefit> benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
-		int totalBenefitsAmount = benefitController.getBenefitDiscountAmountSum(benefits);
+		int totalDiscountAmount = benefitController.getTotalDiscountAmount(benefits);
+		Food giveaway = benefitController.getGiveaways(totalOrderAmount);
+		int totalBenefitAmount = benefitController.getTotalBenefitAmount(totalDiscountAmount, giveaway);
+		int totalPaymentAmount = benefitController.getTotalPaymentAmount(totalOrderAmount, totalDiscountAmount);
 
-		assertEquals(totalBenefitsAmount, -31246);
+		assertEquals(-6246, totalDiscountAmount);
+		assertEquals(-31246, totalBenefitAmount);
+		assertEquals(135754, totalPaymentAmount);
 	}
 
-	@DisplayName("총 혜택 금액을 확인한다2.")
+	@DisplayName("총 할인, 혜택, 결제금액들을 확인한다2.")
 	@Test
-	void checktotalBenefitsAmount2() {
+	void checkTotalDiscountAmountAndTotalBenefitAmountAndTotalPaymentAmount2() {
 		VisitDate visitDate = visitDateController.getVisitDate(26);
 		Foods foods = foodController.getFoods("타파스-1,제로콜라-1");
-		int totalOrderAmount = foodController.getFoodsPriceSum(foods);
+		int totalOrderAmount = foodController.getTotalOrderAmount(foods);
 		List<Benefit> benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
-		int totalBenefitsAmount = benefitController.getBenefitDiscountAmountSum(benefits);
+		int totalDiscountAmount = benefitController.getTotalDiscountAmount(benefits);
+		Food giveaway = benefitController.getGiveaways(totalOrderAmount);
+		int totalBenefitAmount = benefitController.getTotalBenefitAmount(totalDiscountAmount, giveaway);
+		int totalPaymentAmount = benefitController.getTotalPaymentAmount(totalOrderAmount, totalDiscountAmount);
 
-		assertEquals(totalBenefitsAmount, 0);
+		assertEquals(0, totalDiscountAmount);
+		assertEquals(0, totalBenefitAmount);
+		assertEquals(8500, totalPaymentAmount);
 	}
 
-	@DisplayName("총 혜택 금액을 확인한다3.")
+	@DisplayName("총 할인, 혜택, 결제금액들을 확인한다3.")
 	@Test
-	void checktotalBenefitsAmount3() {
+	void checkTotalDiscountAmountAndTotalBenefitAmountAndTotalPaymentAmount3() {
 		VisitDate visitDate = visitDateController.getVisitDate(30);
 		Foods foods = foodController.getFoods("티본스테이크-3,초코케이크-1,제로콜라-1");
-		int totalOrderAmount = foodController.getFoodsPriceSum(foods);
+		int totalOrderAmount = foodController.getTotalOrderAmount(foods);
 		List<Benefit> benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
-		int totalBenefitsAmount = benefitController.getBenefitDiscountAmountSum(benefits);
+		int totalDiscountAmount = benefitController.getTotalDiscountAmount(benefits);
+		Food giveaway = benefitController.getGiveaways(totalOrderAmount);
+		int totalBenefitAmount = benefitController.getTotalBenefitAmount(totalDiscountAmount, giveaway);
+		int totalPaymentAmount = benefitController.getTotalPaymentAmount(totalOrderAmount, totalDiscountAmount);
 
-		assertEquals(totalBenefitsAmount, -34469);
+		assertEquals(-6069, totalDiscountAmount);
+		assertEquals(-31069, totalBenefitAmount);
+		assertEquals(176931, totalPaymentAmount);
 	}
 
-	@DisplayName("총 혜택 금액을 확인한다4.")
+	@DisplayName("총 할인, 혜택, 결제금액들을 확인한다4.")
 	@Test
-	void checktotalBenefitsAmount4() {
+	void checkTotalDiscountAmountAndTotalBenefitAmountAndTotalPaymentAmount4() {
 		VisitDate visitDate = visitDateController.getVisitDate(3);
 		Foods foods = foodController.getFoods("초코케이크-1");
-		int totalOrderAmount = foodController.getFoodsPriceSum(foods);
+		int totalOrderAmount = foodController.getTotalOrderAmount(foods);
 		List<Benefit> benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
-		int totalBenefitsAmount = benefitController.getBenefitDiscountAmountSum(benefits);
+		int totalDiscountAmount = benefitController.getTotalDiscountAmount(benefits);
+		Food giveaway = benefitController.getGiveaways(totalOrderAmount);
+		int totalBenefitAmount = benefitController.getTotalBenefitAmount(totalDiscountAmount, giveaway);
+		int totalPaymentAmount = benefitController.getTotalPaymentAmount(totalOrderAmount, totalDiscountAmount);
 
-		assertEquals(totalBenefitsAmount, -4223);
+		assertEquals(-4223, totalDiscountAmount);
+		assertEquals(-4223, totalBenefitAmount);
+		assertEquals(10777, totalPaymentAmount);
 	}
 }
