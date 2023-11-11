@@ -18,7 +18,7 @@ public class VisitDateTest {
 	@ParameterizedTest
 	void createVisitDateByOverRange(int day) {
 		assertThatThrownBy(() -> new VisitDate(day))
-				.isInstanceOf(IllegalArgumentException.class)
+		.isInstanceOf(IllegalArgumentException.class)
 				.hasMessageContaining(ErrorMessage.VALID_VISITDATE.getMessage());
 	}
 
@@ -29,11 +29,12 @@ public class VisitDateTest {
 		assertDoesNotThrow(() -> new VisitDate(day));
 	}
 
+	@DisplayName("주말인지 확인한다.")
 	@ParameterizedTest
 	@CsvSource(value = { "1, true", "5, false", "21, 17", "30, true", }, delimiter = ',')
-    void checkWeekend(int day, boolean expect) {
-        VisitDate visitDate = new VisitDate(day);
-        boolean result = visitDate.checkWeekend();
-        assertEquals(expect, result);
-    }
+	void checkWeekend(int day, boolean expect) {
+		VisitDate visitDate = new VisitDate(day);
+		boolean result = visitDate.checkWeekend();
+		assertEquals(expect, result);
+	}
 }
