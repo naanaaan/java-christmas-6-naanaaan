@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Map.Entry;
+import java.util.Objects;
 
 import christmas.domain.Food;
 import christmas.domain.Foods;
@@ -48,17 +48,11 @@ public class FoodService {
 		Food food = Menu.getFoodByName(foodName);
 
 		if (Objects.nonNull(food)) {
-			if (foodCounter.containsKey(food)) {
-				throw new IllegalArgumentException();
-			}
-
 			foodCounter.put(food, number);
 		}
 	}
 
-	public int calculateFoodsPriceSum(Foods foods){
-		return foods.getFoods().stream()
-				.mapToInt(food -> food.price())
-				.sum();
+	public int calculateFoodsPriceSum(Foods foods) {
+		return foods.getFoods().stream().mapToInt(food -> food.price()).sum();
 	}
 }
