@@ -53,7 +53,7 @@ public class OutputView {
 				+ OutputViewMessage.NOTHING.getMessage();
 
 		if (Objects.nonNull(giveaway)) {
-			addtoEventProductsMessage(giveawayMessage, giveaway);
+			addToGiveawayMessage(giveawayMessage, giveaway);
 		}
 
 		giveawayMessage.setEmptyValue(empty);
@@ -61,8 +61,32 @@ public class OutputView {
 		System.out.println(NEW_LINE + giveawayMessage.toString());
 	}
 
-	private void addtoEventProductsMessage(StringJoiner giveawayMessage, Food giveaway) {
+	private void addToGiveawayMessage(StringJoiner giveawayMessage, Food giveaway) {
 		giveawayMessage.add(OutputViewMessage.EVENT_PRODUCTS.getMessage());
 		giveawayMessage.add(String.format("%s %,d", giveaway.name(), giveaway.price()));
+	}
+
+	public void printBenefitDetails(List<Benefit> benefits) {
+		StringJoiner benefitDetailsMessage = new StringJoiner(NEW_LINE);
+		String empty = OutputViewMessage.BENEFIT_DETAILS.getMessage() + NEW_LINE
+				+ OutputViewMessage.NOTHING.getMessage();
+
+		if (Objects.nonNull(benefits) && benefits.size() != 0) {
+			addToBenefitDetailMessage(benefitDetailsMessage, benefits);
+		}
+
+		benefitDetailsMessage.setEmptyValue(empty);
+
+		System.out.println(NEW_LINE + benefitDetailsMessage.toString());
+	}
+
+	private void addToBenefitDetailMessage(StringJoiner benefitDetailsMessage, List<Benefit> benefits) {
+		benefitDetailsMessage.add(OutputViewMessage.BENEFIT_DETAILS.getMessage());
+		for (Benefit benefit : benefits) {
+			String benefitEventName = benefit.event().getName();
+			int discountAmount = benefit.discountAmount();
+
+			benefitDetailsMessage.add(String.format("%s : %,d원", benefitEventName, discountAmount));
+		}
 	}
 }
