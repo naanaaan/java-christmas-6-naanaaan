@@ -10,9 +10,9 @@ public class Benefits {
 		this.benefits = benefits;
 	}
 
-	public List<Benefit> getNotZeroDiscountPrice() {
+	public List<Benefit> getNotZeroDiscountAmount() {
 		return benefits.stream()
-				.filter(benefit -> benefit.discountPrice() != 0)
+				.filter(benefit -> benefit.benefitAmount() != 0)
 				.toList();
 	}
 }

@@ -14,6 +14,6 @@ public class BadgeController {
 	}
 
 	public Optional<EventBadge> getBadge(int totalBenefitsAmount) {
-		return badgeService.getBadgeByTotalBenefitsPrice(totalBenefitsAmount);
+		return badgeService.getBadgeByTotalBenefitsAmount(totalBenefitsAmount);
 	}
 }

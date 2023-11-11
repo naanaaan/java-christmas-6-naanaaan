@@ -8,15 +8,15 @@ import christmas.domain.Menu;
 public class GiveawayEventService {
 
 	private static final Event EVENT = Event.GIVEAWAY_EVENT;
-	private static final Menu GITVEAWAY = Menu.CHAMPAGNE;
+	private static final Menu GIVEAWAY = Menu.CHAMPAGNE;
 
 	public Benefit getBenefit() {
-		int discountPrice = GITVEAWAY.getPrice();
+		int benefitAmount = GIVEAWAY.getPrice();
 
-		return new Benefit(EVENT, discountPrice * -1);
+		return new Benefit(EVENT, benefitAmount * -1);
 	}
 
 	public Food getGiveaway() {
-		return GITVEAWAY.toFood();
+		return GIVEAWAY.toFood();
 	}
 }

@@ -15,7 +15,7 @@ public class FoodController {
 		return foodService.createFoods(inputValue);
 	}
 
-	public int getTotalOrderPrice(Foods foods) {
+	public int getTotalOrderAmount(Foods foods) {
 		return foodService.calculateFoodsPriceSum(foods);
 	}
 }

@@ -9,12 +9,12 @@ import christmas.domain.Food;
 
 public class CalcualteBenefitService {
 
-	public int calculateTotalDiscountPrice(List<Benefit> benefits) {
+	public int calculateTotalDiscountAmount(List<Benefit> benefits) {
 		return benefits.stream().filter(benefit -> benefit.event() != Event.GIVEAWAY_EVENT)
-				.mapToInt(benefit -> benefit.discountPrice()).sum();
+				.mapToInt(benefit -> benefit.benefitAmount()).sum();
 	}
 
-	public int calculateTotalBenefitPrice(int totalDiscountPrice, Food giveaway) {
+	public int calculateTotalBenefitAmount(int totalDiscountPrice, Food giveaway) {
 		int gitveawayBenefitPrice = 0;
 
 		if (Objects.nonNull(giveaway)) {
@@ -24,7 +24,7 @@ public class CalcualteBenefitService {
 		return totalDiscountPrice + gitveawayBenefitPrice;
 	}
 
-	public int cacluclateTotalPaymentPrice(int totalOrderPrice, int totalDiscountPrice) {
+	public int cacluclateTotalPaymentAmount(int totalOrderPrice, int totalDiscountPrice) {
 		return totalOrderPrice + totalDiscountPrice;
 	}
 }

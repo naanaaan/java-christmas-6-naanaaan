@@ -33,20 +33,20 @@ public class BenefitController {
 		this.calcualteBenefitService = new CalcualteBenefitService();
 	}
 
-	public List<Benefit> getBenefits(VisitDate visitDate, Foods foods, int totalOrderPrice) {
+	public List<Benefit> getBenefits(VisitDate visitDate, Foods foods, int totalOrderAmount) {
 		List<Benefit> benefits = new ArrayList<>();
 		int day = visitDate.getDay();
 
-		if (totalOrderPrice > DISCOUT_CONDITION) {
+		if (totalOrderAmount > DISCOUT_CONDITION) {
 			benefits.add(getDayOfWeekBenefit(visitDate, foods));
 			benefits.add(getDDayBenefit(day));
 			benefits.add(getSpecialBenefit(day));
 		}
-		if (totalOrderPrice > GIVEAWAY_CONDITION) {
+		if (totalOrderAmount > GIVEAWAY_CONDITION) {
 			benefits.add(getGiveawayBenefit());
 		}
 
-		return new Benefits(benefits).getNotZeroDiscountPrice();
+		return new Benefits(benefits).getNotZeroDiscountAmount();
 	}
 
 	private Benefit getDayOfWeekBenefit(VisitDate visitDate, Foods foods) {
@@ -65,22 +65,22 @@ public class BenefitController {
 		return specialDiscountService.getBenefit(day);
 	}
 
-	public Food getGiveaways(int totalOrderPrice) {
-		if (totalOrderPrice > GIVEAWAY_CONDITION) {
+	public Food getGiveaways(int totalOrderAmount) {
+		if (totalOrderAmount > GIVEAWAY_CONDITION) {
 			return giveawayEventService.getGiveaway();
 		}
 		return null;
 	}
 
-	public int getTotalDiscountPrice(List<Benefit> benefits) {
-		return calcualteBenefitService.calculateTotalDiscountPrice(benefits);
+	public int getTotalDiscountAmount(List<Benefit> benefits) {
+		return calcualteBenefitService.calculateTotalDiscountAmount(benefits);
 	}
-	
-	public int getTotalBenefitPrice(int totalDiscountPrice, Food giveaway) {
-		return calcualteBenefitService.calculateTotalBenefitPrice(totalDiscountPrice, giveaway);
+
+	public int getTotalBenefitAmount(int totalDiscountAmount, Food giveaway) {
+		return calcualteBenefitService.calculateTotalBenefitAmount(totalDiscountAmount, giveaway);
 	}
-	
-	public int getTotalPaymentPrice(int totalOrderPrice, int totalDiscountPrice) {
-		return calcualteBenefitService.cacluclateTotalPaymentPrice(totalOrderPrice, totalDiscountPrice);
+
+	public int getTotalPaymentAmount(int totalOrderAmount, int totalDiscountAmount) {
+		return calcualteBenefitService.cacluclateTotalPaymentAmount(totalOrderAmount, totalDiscountAmount);
 	}
 }

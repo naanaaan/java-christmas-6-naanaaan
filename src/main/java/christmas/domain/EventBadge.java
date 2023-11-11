@@ -5,21 +5,21 @@ import java.util.Optional;
 
 public enum EventBadge {
 
-	SANTA(20000, "산타"), 
-	TREE(10000, "트리"), 
-	STAR(5000, "별");
+	SANTA(20_000, "산타"), 
+	TREE(10_000, "트리"), 
+	STAR(5_000, "별");
 
-	private final int minTotalBenefitsPrice;
+	private final int minTotalBenefitAmount;
 	private final String badgeName;
 
-	EventBadge(int minTotalBenefitsPrice, String badgeName) {
-		this.minTotalBenefitsPrice = minTotalBenefitsPrice;
+	EventBadge(int minTotalBenefitAmount, String badgeName) {
+		this.minTotalBenefitAmount = minTotalBenefitAmount;
 		this.badgeName = badgeName;
 	}
 
-	public static Optional<EventBadge> getBadgeByTotalBenefitsPrice(int totalBenefitsPrice) {
+	public static Optional<EventBadge> getBadgeByTotalBenefitAmount(int totalBenefitAmount) {
 		return Arrays.stream(values())	
-				.filter(badge -> Math.abs(totalBenefitsPrice) >= badge.minTotalBenefitsPrice)
+				.filter(badge -> Math.abs(totalBenefitAmount) >= badge.minTotalBenefitAmount)
 				.findFirst();
 	}
 

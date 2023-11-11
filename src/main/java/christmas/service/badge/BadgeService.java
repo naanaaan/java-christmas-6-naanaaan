@@ -6,8 +6,8 @@ import christmas.domain.EventBadge;
 
 public class BadgeService {
 
-	public Optional<EventBadge> getBadgeByTotalBenefitsPrice(int totalBenefitPrice) {
-		Optional<EventBadge> badge = EventBadge.getBadgeByTotalBenefitsPrice(totalBenefitPrice);
+	public Optional<EventBadge> getBadgeByTotalBenefitsAmount(int totalBenefitAmount) {
+		Optional<EventBadge> badge = EventBadge.getBadgeByTotalBenefitAmount(totalBenefitAmount);
 
 		return badge;
 	}

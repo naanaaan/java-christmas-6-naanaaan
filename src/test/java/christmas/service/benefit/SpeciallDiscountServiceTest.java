@@ -20,7 +20,7 @@ public class SpeciallDiscountServiceTest {
 	@CsvSource(value = { "3,-1000", "17,-1000", "31,-1000" }, delimiter = ',')
 	@ParameterizedTest
 	void checkDiscountAmount(int day, int expect) {
-		int discountAmount = specialDiscountService.getBenefit(day).discountAmount();
+		int discountAmount = specialDiscountService.getBenefit(day).benefitAmount();
 
 		assertEquals(discountAmount, expect);
 	}
