@@ -10,7 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import christmas.domain.benefit.Benefit;
-import christmas.domain.benefit.Event;
+import christmas.domain.benefit.DecemberEvent;
 import christmas.domain.food.Food;
 import christmas.domain.food.Menu;
 
@@ -28,10 +28,10 @@ class CalculateBenefitServiceTest {
 	@ParameterizedTest
 	void checkTotalDiscountAmount(int dDay, int weekend, int special, int expect) {
 
-		Benefit dDayBenefit = new Benefit(Event.DDAY_DISCOUNT, dDay);
-		Benefit weekendBenefit = new Benefit(Event.WEEKEND_DISCOUNT, weekend);
-		Benefit specialBenefit = new Benefit(Event.SPECIAL_DISCOUNT, special);
-		Benefit giveawayBenefit = new Benefit(Event.GIVEAWAY_EVENT, Menu.CHAMPAGNE.getPrice() * -1);
+		Benefit dDayBenefit = new Benefit(DecemberEvent.DDAY_DISCOUNT, dDay);
+		Benefit weekendBenefit = new Benefit(DecemberEvent.WEEKEND_DISCOUNT, weekend);
+		Benefit specialBenefit = new Benefit(DecemberEvent.SPECIAL_DISCOUNT, special);
+		Benefit giveawayBenefit = new Benefit(DecemberEvent.GIVEAWAY_EVENT, Menu.CHAMPAGNE.getPrice() * -1);
 
 		int totalDiscountAmount = calculateBenefitService
 				.calculateTotalDiscountAmount(List.of(dDayBenefit, weekendBenefit, specialBenefit, giveawayBenefit));

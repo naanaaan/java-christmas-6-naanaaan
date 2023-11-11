@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Objects;
 
 import christmas.domain.benefit.Benefit;
-import christmas.domain.benefit.Event;
+import christmas.domain.benefit.DecemberEvent;
 import christmas.domain.food.Food;
 
 public class CalculateBenefitService {
 
 	public int calculateTotalDiscountAmount(List<Benefit> benefits) {
-		return benefits.stream().filter(benefit -> benefit.event() != Event.GIVEAWAY_EVENT)
+		return benefits.stream().filter(benefit -> benefit.event() != DecemberEvent.GIVEAWAY_EVENT)
 				.mapToInt(benefit -> benefit.benefitAmount()).sum();
 	}
 

@@ -1,11 +1,11 @@
 package christmas.service.benefit;
 
 import christmas.domain.benefit.Benefit;
-import christmas.domain.benefit.Event;
+import christmas.domain.benefit.DecemberEvent;
 
 public class DDayDiscountService {
 
-	private static final Event EVENT = Event.DDAY_DISCOUNT;
+	private static final DecemberEvent EVENT = DecemberEvent.DDAY_DISCOUNT;
 	private static final int MIN_DAY = 1;
 	private static final int MAX_DAY = 25;
 	private static final int D_DAY_DISCOUNT = 100;

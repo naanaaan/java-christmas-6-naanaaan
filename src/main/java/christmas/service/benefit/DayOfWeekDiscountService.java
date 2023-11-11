@@ -1,22 +1,22 @@
 package christmas.service.benefit;
 
 import christmas.domain.benefit.Benefit;
-import christmas.domain.benefit.Event;
+import christmas.domain.benefit.DecemberEvent;
 import christmas.domain.food.FoodCategory;
 import christmas.domain.food.Foods;
 import christmas.domain.visitDate.VisitDate;
 
 public class DayOfWeekDiscountService {
 
-	private static final Event WEEKEND_EVENT = Event.WEEKEND_DISCOUNT;
-	private static final Event WEEKDAY_EVENT = Event.WEEKDAY_DISCOUNT;
+	private static final DecemberEvent WEEKEND_EVENT = DecemberEvent.WEEKEND_DISCOUNT;
+	private static final DecemberEvent WEEKDAY_EVENT = DecemberEvent.WEEKDAY_DISCOUNT;
 	private static final FoodCategory WEEKEND_DISCOUNT_ELIGIBLE = FoodCategory.MAIN;
 	private static final FoodCategory WEEKDAY_DISCOUNT_ELIGIBLE = FoodCategory.DESSERT;
 	private static final int DISCOUNT_AMOUNT = 2_023;
 	
 	public Benefit getBenefit(VisitDate visitDate, Foods foods) {
 		int foodCount = 0;
-		Event event = null;
+		DecemberEvent event = null;
 
 		if (visitDate.checkWeekend()) {
 			foodCount = foods.countFoodsByCategory(WEEKEND_DISCOUNT_ELIGIBLE);
