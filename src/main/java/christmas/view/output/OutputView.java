@@ -1,8 +1,12 @@
 package christmas.view.output;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.StringJoiner;
 
+import christmas.domain.Badge;
+import christmas.domain.Benefit;
 import christmas.domain.Food;
 import christmas.domain.VisitDate;
 
@@ -43,4 +47,22 @@ public class OutputView {
 		System.out.println(NEW_LINE + beforeDiscountMessage.toString());
 	}
 
+	public void printGiveawayMenu(Food giveaway) {
+		StringJoiner giveawayMessage = new StringJoiner(NEW_LINE);
+		String empty = OutputViewMessage.EVENT_PRODUCTS.getMessage() + NEW_LINE
+				+ OutputViewMessage.NOTHING.getMessage();
+
+		if (Objects.nonNull(giveaway)) {
+			addtoEventProductsMessage(giveawayMessage, giveaway);
+		}
+
+		giveawayMessage.setEmptyValue(empty);
+
+		System.out.println(NEW_LINE + giveawayMessage.toString());
+	}
+
+	private void addtoEventProductsMessage(StringJoiner giveawayMessage, Food giveaway) {
+		giveawayMessage.add(OutputViewMessage.EVENT_PRODUCTS.getMessage());
+		giveawayMessage.add(String.format("%s %,d", giveaway.name(), giveaway.price()));
+	}
 }
