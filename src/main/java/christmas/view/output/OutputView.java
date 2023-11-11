@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-import christmas.domain.Badge;
 import christmas.domain.Benefit;
 import christmas.domain.Food;
 import christmas.domain.VisitDate;
@@ -39,10 +38,10 @@ public class OutputView {
 		System.out.println(NEW_LINE + orderMenuMessage.toString());
 	}
 
-	public void printTotalOrderAmountBeforeDiscount(int totalAmount) {
+	public void printTotalOrderAmountBeforeDiscount(int totalOrderPrice) {
 		StringJoiner beforeDiscountMessage = new StringJoiner(NEW_LINE);
 		beforeDiscountMessage.add(OutputViewMessage.TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT.getMessage());
-		beforeDiscountMessage.add(String.format("%,d원", totalAmount));
+		beforeDiscountMessage.add(String.format("%,d원", totalOrderPrice));
 
 		System.out.println(NEW_LINE + beforeDiscountMessage.toString());
 	}
@@ -90,12 +89,21 @@ public class OutputView {
 		}
 	}
 
-	public void printTotalBenefitsAmount(int TotalBenefitsAmount) {
+	public void printTotalBenefitsAmount(int totalBenefitsAmount) {
 		StringJoiner benefitsAmountMessage = new StringJoiner(NEW_LINE);
 
 		benefitsAmountMessage.add(OutputViewMessage.TOTAL_BENEFITS_AMOUNT.getMessage());
-		benefitsAmountMessage.add(String.format("%,d원", TotalBenefitsAmount));
+		benefitsAmountMessage.add(String.format("%,d원", totalBenefitsAmount));
 
 		System.out.println(NEW_LINE + benefitsAmountMessage.toString());
+	}
+	
+	public void printTotalPaymentAmountAfterDiscount(int totalPayment) {
+		StringJoiner totalPaymentMessage = new StringJoiner(NEW_LINE);
+		
+		totalPaymentMessage.add(OutputViewMessage.TOTAL_PAYMENT_AMOUNT_AFTER_DISCOUNT.getMessage());
+		totalPaymentMessage.add(String.format("%,d원", totalPayment));
+
+		System.out.println(NEW_LINE + totalPaymentMessage.toString());
 	}
 }
