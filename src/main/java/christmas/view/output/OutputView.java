@@ -89,4 +89,13 @@ public class OutputView {
 			benefitDetailsMessage.add(String.format("%s : %,d원", benefitEventName, discountAmount));
 		}
 	}
+
+	public void printTotalBenefitsAmount(int TotalBenefitsAmount) {
+		StringJoiner benefitsAmountMessage = new StringJoiner(NEW_LINE);
+
+		benefitsAmountMessage.add(OutputViewMessage.TOTAL_BENEFITS_AMOUNT.getMessage());
+		benefitsAmountMessage.add(String.format("%,d원", TotalBenefitsAmount));
+
+		System.out.println(NEW_LINE + benefitsAmountMessage.toString());
+	}
 }
