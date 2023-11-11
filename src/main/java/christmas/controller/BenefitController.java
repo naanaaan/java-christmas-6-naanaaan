@@ -79,4 +79,8 @@ public class BenefitController {
 	public int getTotalBenefitPrice(int totalDiscountPrice, Food giveaway) {
 		return calcualteBenefitService.calculateTotalBenefitPrice(totalDiscountPrice, giveaway);
 	}
+	
+	public int getTotalPaymentPrice(int totalOrderPrice, int totalDiscountPrice) {
+		return calcualteBenefitService.cacluclateTotalPaymentPrice(totalOrderPrice, totalDiscountPrice);
+	}
 }
