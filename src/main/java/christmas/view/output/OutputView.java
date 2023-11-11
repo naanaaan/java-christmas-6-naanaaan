@@ -63,7 +63,7 @@ public class OutputView {
 
 	private void addToGiveawayMessage(StringJoiner giveawayMessage, Food giveaway) {
 		giveawayMessage.add(OutputViewMessage.EVENT_PRODUCTS.getMessage());
-		giveawayMessage.add(String.format("%s %,d", giveaway.name(), giveaway.price()));
+		giveawayMessage.add(String.format("%s %d개", giveaway.name(), 1));
 	}
 
 	public void printBenefitDetails(List<Benefit> benefits) {
