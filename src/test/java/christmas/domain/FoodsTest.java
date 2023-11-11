@@ -2,12 +2,15 @@ package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -79,4 +82,21 @@ public class FoodsTest {
 	private static List<Food> generateFoods(Menu menu, int limitNumber) {
 		return Stream.generate(() -> menu.toFood()).limit(limitNumber).toList();
 	}
+	
+	@Test
+    @DisplayName("특정 카테고리를 가진 음식들의 갯수를 확인한다.")
+    void checkFoodNumberBySpecificCategory() {
+        Foods foods = new Foods(List.of(
+                new Food(FoodCategory.APPETIZER, "양송이수프", 6000),
+                new Food(FoodCategory.APPETIZER, "양송이수프", 6000),
+                new Food(FoodCategory.APPETIZER, "양송이수프", 6000),
+                new Food(FoodCategory.MAIN, "티본스테이크", 55000),
+                new Food(FoodCategory.BEVERAGE, "레드와인", 60000)
+        ));
+
+        assertEquals(3, foods.countFoodsByCategory(FoodCategory.APPETIZER));
+        assertEquals(1, foods.countFoodsByCategory(FoodCategory.MAIN));
+        assertEquals(1, foods.countFoodsByCategory(FoodCategory.BEVERAGE));
+        assertEquals(0, foods.countFoodsByCategory(FoodCategory.DESSERT));
+    }
 }
