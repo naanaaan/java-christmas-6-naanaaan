@@ -3,9 +3,9 @@ package christmas.service.benefit;
 import java.util.List;
 import java.util.Objects;
 
-import christmas.domain.Benefit;
-import christmas.domain.Event;
 import christmas.domain.Food;
+import christmas.domain.benefit.Benefit;
+import christmas.domain.benefit.Event;
 
 public class CalculateBenefitService {
 

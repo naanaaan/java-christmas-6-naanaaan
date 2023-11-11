@@ -1,10 +1,10 @@
 package christmas.service.benefit;
 
-import christmas.domain.Benefit;
-import christmas.domain.Event;
 import christmas.domain.FoodCategory;
 import christmas.domain.Foods;
 import christmas.domain.VisitDate;
+import christmas.domain.benefit.Benefit;
+import christmas.domain.benefit.Event;
 
 public class DayOfWeekDiscountService {
 

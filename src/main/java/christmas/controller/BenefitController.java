@@ -3,11 +3,11 @@ package christmas.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import christmas.domain.Benefit;
-import christmas.domain.Benefits;
 import christmas.domain.Food;
 import christmas.domain.Foods;
 import christmas.domain.VisitDate;
+import christmas.domain.benefit.Benefit;
+import christmas.domain.benefit.Benefits;
 import christmas.service.benefit.CalculateBenefitService;
 import christmas.service.benefit.DDayDiscountService;
 import christmas.service.benefit.DayOfWeekDiscountService;

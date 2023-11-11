@@ -8,10 +8,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import christmas.domain.Benefit;
 import christmas.domain.Food;
 import christmas.domain.Foods;
 import christmas.domain.VisitDate;
+import christmas.domain.benefit.Benefit;
 
 public class BenefitControllerTest {
 

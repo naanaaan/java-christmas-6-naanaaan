@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.benefit;
 
 public record Benefit(Event event, int benefitAmount) {
 	

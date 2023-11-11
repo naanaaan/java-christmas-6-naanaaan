@@ -1,9 +1,9 @@
 package christmas.service.benefit;
 
-import christmas.domain.Benefit;
-import christmas.domain.Event;
 import christmas.domain.Food;
 import christmas.domain.Menu;
+import christmas.domain.benefit.Benefit;
+import christmas.domain.benefit.Event;
 
 public class GiveawayEventService {
 

@@ -8,6 +8,10 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import christmas.domain.benefit.Benefit;
+import christmas.domain.benefit.Benefits;
+import christmas.domain.benefit.Event;
+
 class BenefitsTest {
 
 	@DisplayName("할인가격이 0이 아닌 혜택들을 반환하는지 확인한다.")
