@@ -8,7 +8,7 @@ import christmas.domain.Benefits;
 import christmas.domain.Food;
 import christmas.domain.Foods;
 import christmas.domain.VisitDate;
-import christmas.service.benefit.CalcualteBenefitService;
+import christmas.service.benefit.CalculateBenefitService;
 import christmas.service.benefit.DDayDiscountService;
 import christmas.service.benefit.DayOfWeekDiscountService;
 import christmas.service.benefit.GiveawayEventService;
@@ -23,14 +23,14 @@ public class BenefitController {
 	private final DDayDiscountService dDayDiscountService;
 	private final GiveawayEventService giveawayEventService;
 	private final SpecialDiscountService specialDiscountService;
-	private final CalcualteBenefitService calcualteBenefitService;
+	private final CalculateBenefitService calcualteBenefitService;
 
 	public BenefitController() {
 		this.dayOfWeekDiscountService = new DayOfWeekDiscountService();
 		this.dDayDiscountService = new DDayDiscountService();
 		this.giveawayEventService = new GiveawayEventService();
 		this.specialDiscountService = new SpecialDiscountService();
-		this.calcualteBenefitService = new CalcualteBenefitService();
+		this.calcualteBenefitService = new CalculateBenefitService();
 	}
 
 	public List<Benefit> getBenefits(VisitDate visitDate, Foods foods, int totalOrderAmount) {
