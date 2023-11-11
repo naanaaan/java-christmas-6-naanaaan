@@ -13,7 +13,7 @@ public class BadgeController {
 		this.badgeService = new BadgeService();
 	}
 
-	public Optional<EventBadge> getBadge(int totalBenefitsAmount) {
-		return badgeService.getBadgeByTotalBenefitsAmount(totalBenefitsAmount);
+	public Optional<EventBadge> getBadge(int totalBenefitAmount) {
+		return badgeService.getBadgeByTotalBenefitAmount(totalBenefitAmount);
 	}
 }
