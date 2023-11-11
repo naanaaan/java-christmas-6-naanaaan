@@ -35,5 +35,12 @@ public class OutputView {
 		System.out.println(NEW_LINE + orderMenuMessage.toString());
 	}
 
-	
+	public void printTotalOrderAmountBeforeDiscount(int totalAmount) {
+		StringJoiner beforeDiscountMessage = new StringJoiner(NEW_LINE);
+		beforeDiscountMessage.add(OutputViewMessage.TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT.getMessage());
+		beforeDiscountMessage.add(String.format("%,d원", totalAmount));
+
+		System.out.println(NEW_LINE + beforeDiscountMessage.toString());
+	}
+
 }
