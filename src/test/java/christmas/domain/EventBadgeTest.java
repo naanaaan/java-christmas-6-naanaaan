@@ -12,8 +12,8 @@ public class EventBadgeTest {
 	@CsvSource(value = {"6000,별", "11000,트리", "4000,없음", "20000,산타", "25000,산타"}, delimiter = ',')
 	@ParameterizedTest
 	void checkBadgeByTotalBenefitsAmount(int amount, String expect) {
-		String badge = EventBadge.getBadgeByTotalBenefitsAmount(amount).getBadgeName();
+		EventBadge badge = EventBadge.getBadgeByTotalBenefitsAmount(amount);
 		
-		assertEquals(badge, expect);
+		assertEquals(badge.getBadgeName(), expect);
 	}
 }
