@@ -3,10 +3,11 @@ package christmas.domain;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
@@ -83,8 +84,8 @@ public class FoodsTest {
 		return Stream.generate(() -> menu.toFood()).limit(limitNumber).toList();
 	}
 	
+	@DisplayName("특정 카테고리를 가진 음식들의 갯수를 확인한다.")
 	@Test
-    @DisplayName("특정 카테고리를 가진 음식들의 갯수를 확인한다.")
     void checkFoodNumberBySpecificCategory() {
         Foods foods = new Foods(List.of(
                 new Food(FoodCategory.APPETIZER, "양송이수프", 6000),
@@ -99,4 +100,21 @@ public class FoodsTest {
         assertEquals(1, foods.countFoodsByCategory(FoodCategory.BEVERAGE));
         assertEquals(0, foods.countFoodsByCategory(FoodCategory.DESSERT));
     }
+
+	@DisplayName("음식들을 Map형태로 반환한다.")
+	@Test
+	void checkFoodToMap() {
+		Food food1 = new Food(FoodCategory.MAIN, "티본스테이크", 55_000);
+		Food food2 = new Food(FoodCategory.BEVERAGE, "제로콜라", 3_000);
+		Food food3 = new Food(FoodCategory.DESSERT, "초코케이크", 15_000);
+		Foods foods = new Foods(List.of(food1, food2, food3));
+		Map<Food, Integer> foodCounter = foods.toMap();
+
+		assertEquals(foods.getFoodsSize(), foodCounter.size());
+
+		for (Food food : foods.getFoods()) {
+			assertTrue(foodCounter.containsKey(food));
+			assertEquals(1, foodCounter.get(food));
+		}
+	}
 }
