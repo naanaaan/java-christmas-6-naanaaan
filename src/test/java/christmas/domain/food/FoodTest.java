@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.food;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;

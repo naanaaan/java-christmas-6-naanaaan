@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.benefit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
