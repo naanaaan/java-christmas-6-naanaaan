@@ -8,6 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import christmas.domain.badge.EventBadge;
+
 public class EventBadgeTest {
 
 	@DisplayName("총혜택 금액에 따라 뱃지를 부여한다.")

@@ -2,7 +2,7 @@ package christmas.controller;
 
 import java.util.Optional;
 
-import christmas.domain.EventBadge;
+import christmas.domain.badge.EventBadge;
 import christmas.service.badge.BadgeService;
 
 public class BadgeController {
