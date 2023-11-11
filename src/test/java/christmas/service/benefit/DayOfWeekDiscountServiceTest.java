@@ -31,6 +31,6 @@ class DayOfWeekDiscountServiceTest {
 	void checkDiscountAmount(int day, int expect) {
 		int discountAmount = dayOfWeekDiscountService.getBenefit(new VisitDate(day), foods).benefitAmount();
 
-		assertEquals(discountAmount, expect);
+		assertEquals(expect, discountAmount);
 	}
 }
