@@ -18,8 +18,8 @@ public enum EventBadge {
 	}
 
 	public static EventBadge getBadgeByTotalBenefitsPrice(int totalBenefitsPrice) {
-		return Arrays.stream(values())
-				.filter(badge -> totalBenefitsPrice >= badge.minTotalBenefitsPrice)
+		return Arrays.stream(values())	
+				.filter(badge -> Math.abs(totalBenefitsPrice) >= badge.minTotalBenefitsPrice)
 				.findFirst()
 				.orElse(NOTHING);
 	}
