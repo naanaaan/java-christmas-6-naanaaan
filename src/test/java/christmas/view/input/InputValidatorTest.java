@@ -14,7 +14,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import christmas.service.ErrorMessage;
+import christmas.util.ErrorMessage;
 import christmas.view.Input.InputValidator;
 
 public class InputValidatorTest {
@@ -25,7 +25,7 @@ public class InputValidatorTest {
 	void checkOrderFormat(String inputValue) {
 		assertThatThrownBy(() -> InputValidator.validateOrderFormat(inputValue))
 				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessageContaining(ErrorMessage.ORDER_MENU.getMessage());
+				.hasMessageContaining(ErrorMessage.VALID_ORDER_MENU.getMessage());
 	}
 
 	@DisplayName("주문 형태(e.g. 해산물파스타-2,레드와인-1,초코케이크-1)일 때 정상작동한다.")
@@ -41,7 +41,7 @@ public class InputValidatorTest {
 	void checkFoodNumberZero(String inputValue) {
 		assertThatThrownBy(() -> InputValidator.validateOrderFormat(inputValue))
 				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessageContaining(ErrorMessage.ORDER_MENU.getMessage());
+				.hasMessageContaining(ErrorMessage.VALID_ORDER_MENU.getMessage());
 	}
 
 	@DisplayName("음식의 갯수가 1이상일 때 정상작동한다.")
@@ -57,7 +57,7 @@ public class InputValidatorTest {
 	void checkValidFoodName(String inputValue) {
 		assertThatThrownBy(() -> InputValidator.validateValidFoodName(inputValue))
 				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessageContaining(ErrorMessage.ORDER_MENU.getMessage());
+				.hasMessageContaining(ErrorMessage.VALID_ORDER_MENU.getMessage());
 	}
 
 	@DisplayName("음식이 메뉴에 있을 때 정상작동한다.")
@@ -76,7 +76,7 @@ public class InputValidatorTest {
 			for (String foodName : foodNameList) {
 				InputValidator.validateDuplicateFoodName(duplicateChecker, foodName);
 			}
-		}).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ErrorMessage.ORDER_MENU.getMessage());
+		}).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ErrorMessage.VALID_ORDER_MENU.getMessage());
 	}
 
 	static Stream<Arguments> createcheckValidFoodNameMethodParameter() {
@@ -104,7 +104,7 @@ public class InputValidatorTest {
 	@ParameterizedTest
 	void checkNumberFormat(String inputValue) {
 		assertThatThrownBy(() -> InputValidator.validateNumberFormat(inputValue))
-				.isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ErrorMessage.VISITDATE.getMessage());
+				.isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ErrorMessage.VALID_VISITDATE.getMessage());
 	}
 
 	@DisplayName("문자가 아닌 숫자만 입력시 정상작동한다.")
@@ -119,7 +119,7 @@ public class InputValidatorTest {
 	@ParameterizedTest
 	void checkIsEmpty(String inputValue) {
 		assertThatThrownBy(() -> InputValidator.validateIsEmpty(inputValue))
-				.isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ErrorMessage.VISITDATE.getMessage());
+				.isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ErrorMessage.VALID_VISITDATE.getMessage());
 	}
 
 	@DisplayName("값이 존재할 때 정상작동한다.")

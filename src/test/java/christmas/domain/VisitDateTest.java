@@ -9,7 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import christmas.service.ErrorMessage;
+import christmas.util.ErrorMessage;
 
 public class VisitDateTest {
 
@@ -19,7 +19,7 @@ public class VisitDateTest {
 	void createVisitDateByOverRange(int day) {
 		assertThatThrownBy(() -> new VisitDate(day))
 				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessageContaining(ErrorMessage.VISITDATE.getMessage());
+				.hasMessageContaining(ErrorMessage.VALID_VISITDATE.getMessage());
 	}
 
 	@DisplayName("방문날짜가 해당 월의 일에 해당될 때 정상작동한다.")

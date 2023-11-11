@@ -3,7 +3,7 @@ package christmas.domain;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-import christmas.service.ErrorMessage;
+import christmas.util.ErrorMessage;
 
 public class VisitDate {
 
@@ -25,7 +25,7 @@ public class VisitDate {
 
 	private void validateisOutOfRange(int day) {
 		if (day > MAX_DAY || day < MIN_DAY) {
-			throw new IllegalArgumentException(ErrorMessage.VISITDATE.getMessage());
+			throw new IllegalArgumentException(ErrorMessage.VALID_VISITDATE.getMessage());
 		}
 	}
 

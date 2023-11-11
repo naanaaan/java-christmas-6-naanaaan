@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 import christmas.domain.Menu;
-import christmas.service.ErrorMessage;
+import christmas.util.ErrorMessage;
 
 public class InputValidator {
 
@@ -18,32 +18,32 @@ public class InputValidator {
 
 	public static void validateOrderFormat(String inputValue) {
 		if (!ORDER_FORMAT.matcher(inputValue).matches()) {
-			throw new IllegalArgumentException(ErrorMessage.ORDER_MENU.getMessage());
+			throw new IllegalArgumentException(ErrorMessage.VALID_ORDER_MENU.getMessage());
 		}
 	}
 
 	public static void validateValidFoodName(String inputValue) {
 		if (!Menu.checkByName(inputValue)) {
-			throw new IllegalArgumentException(ErrorMessage.ORDER_MENU.getMessage());
+			throw new IllegalArgumentException(ErrorMessage.VALID_ORDER_MENU.getMessage());
 		}
 	}
 
 	public static void validateDuplicateFoodName(Set<String> checker, String foodName) {
 		if (!checker.add(foodName)) {
-			throw new IllegalArgumentException(ErrorMessage.ORDER_MENU.getMessage());
+			throw new IllegalArgumentException(ErrorMessage.VALID_ORDER_MENU.getMessage());
 		}
 
 	}
 
 	public static void validateNumberFormat(String inputValue) {
 		if (!NUMBER_FORMAT.matcher(inputValue).matches()) {
-			throw new IllegalArgumentException(ErrorMessage.VISITDATE.getMessage());
+			throw new IllegalArgumentException(ErrorMessage.VALID_VISITDATE.getMessage());
 		}
 	}
 
 	public static void validateIsEmpty(String inputValue) {
 		if (isEmpty(inputValue)) {
-			throw new IllegalArgumentException(ErrorMessage.VISITDATE.getMessage());
+			throw new IllegalArgumentException(ErrorMessage.VALID_VISITDATE.getMessage());
 		}
 	}
 
