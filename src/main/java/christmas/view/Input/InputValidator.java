@@ -3,7 +3,7 @@ package christmas.view.Input;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import christmas.domain.Menu;
+import christmas.domain.food.Menu;
 import christmas.util.ErrorMessage;
 
 public class InputValidator {

@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.food;
 
 public record Food(FoodCategory foodCategory, String name, int price) {
 

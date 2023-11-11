@@ -1,6 +1,6 @@
 package christmas.controller;
 
-import christmas.domain.Foods;
+import christmas.domain.food.Foods;
 import christmas.service.food.FoodService;
 
 public class FoodController {

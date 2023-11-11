@@ -9,10 +9,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import christmas.domain.Food;
-import christmas.domain.Menu;
 import christmas.domain.benefit.Benefit;
 import christmas.domain.benefit.Event;
+import christmas.domain.food.Food;
+import christmas.domain.food.Menu;
 
 class CalculateBenefitServiceTest {
 

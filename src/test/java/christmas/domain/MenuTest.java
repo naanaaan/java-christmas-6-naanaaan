@@ -9,6 +9,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import christmas.domain.food.Menu;
+
 public class MenuTest {
 
 	@DisplayName("메뉴 이름에 해당하는 Enum 객체를 확인한다.")

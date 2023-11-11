@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import christmas.domain.food.Food;
+import christmas.domain.food.FoodCategory;
+
 public class FoodTest {
 
 	@DisplayName("음식의 카테고리를 확인한다..")

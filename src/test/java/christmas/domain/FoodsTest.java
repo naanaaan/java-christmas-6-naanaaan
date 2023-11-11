@@ -16,6 +16,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import christmas.domain.food.Food;
+import christmas.domain.food.FoodCategory;
+import christmas.domain.food.Foods;
+import christmas.domain.food.Menu;
 import christmas.util.ErrorMessage;
 
 public class FoodsTest {
