@@ -1,7 +1,11 @@
 package christmas.domain;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import christmas.util.ErrorMessage;
 
 public class Foods {
 
@@ -22,13 +26,14 @@ public class Foods {
 
 	private void validateFoodNumber(List<Food> foods) {
 		if (isOutOfRange(foods.size())) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(
+					String.format(ErrorMessage.ORDER_NUMBER.getMessage(), MAX_NUMBER));
 		}
 	}
 
 	private void validateOnlyBeverage(List<Food> foods) {
 		if (foods.stream().allMatch(food -> food.foodCategory() == FoodCategory.BEVERAGE)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorMessage.ONLY_BEVERAGE.getMessage());
 		}
 	}
 
@@ -37,9 +42,17 @@ public class Foods {
 	}
 
 	public int countFoodsByCategory(FoodCategory categoryToCheck) {
-		return (int) foods.stream()
-				.filter(food -> food.checkCategory(categoryToCheck))
-				.count();
+		return (int) foods.stream().filter(food -> food.checkCategory(categoryToCheck)).count();
+	}
+
+	public Map<Food, Integer> toMap() {
+		Map<Food, Integer> foodMap = new HashMap<>();
+
+		for (Food food : foods) {
+			foodMap.put(food, foodMap.getOrDefault(food, 0) + 1);
+		}
+
+		return foodMap;
 	}
 
 	public int getFoodsSize() {

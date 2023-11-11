@@ -12,6 +12,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import christmas.util.ErrorMessage;
+
 public class FoodsTest {
 
 	@DisplayName("Foods의 사이즈가 1 ~ 20이 아닐 때 예외가 발생한다.")
@@ -19,7 +21,8 @@ public class FoodsTest {
 	@ParameterizedTest
 	void createFoodsByOverSize(List<Food> foods) {
 		assertThatThrownBy(() -> new Foods(foods))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(String.format(ErrorMessage.ORDER_NUMBER.getMessage(), Foods.MAX_NUMBER));
 	}
 
 	static Stream<Arguments> createCreateFoodByOverSizeMethodParameter() {
@@ -48,7 +51,8 @@ public class FoodsTest {
 	@ParameterizedTest
 	void createFoodsByOnlyBeverage(List<Food> foods) {
 		assertThatThrownBy(() -> new Foods(foods))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(ErrorMessage.ONLY_BEVERAGE.getMessage());
 	}
 
 	static Stream<Arguments> createCreateFoodByOnlyBeverageMethodParameter() {
