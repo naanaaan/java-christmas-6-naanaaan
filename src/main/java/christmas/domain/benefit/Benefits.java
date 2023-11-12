@@ -1,5 +1,6 @@
 package christmas.domain.benefit;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Benefits {
@@ -7,12 +8,12 @@ public class Benefits {
 	private final List<Benefit> benefits;
 
 	public Benefits(List<Benefit> benefits) {
-		this.benefits = benefits;
+		this.benefits = filterNonZeroDiscountBenefits(benefits);
 	}
 
-	public List<Benefit> getNotZeroDiscountAmount() {
-		return benefits.stream()
-				.filter(benefit -> benefit.checkNotZeroDiscountAmount())
+	private List<Benefit> filterNonZeroDiscountBenefits(List<Benefit> benefits) {
+		return benefits.stream(
+				).filter(benefit -> benefit.checkNotZeroDiscountAmount())
 				.toList();
 	}
 }
