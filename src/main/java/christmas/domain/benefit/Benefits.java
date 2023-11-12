@@ -12,14 +12,14 @@ public class Benefits {
 	}
 
 	private List<Benefit> filterNonZeroDiscountBenefits(List<Benefit> benefits) {
-		return benefits.stream(
-				).filter(benefit -> benefit.checkNotZeroDiscountAmount())
+		return benefits.stream()
+				.filter(benefit -> benefit.checkNotZeroDiscountAmount())
 				.toList();
 	}
 
 	public int getTotalDiscountAmount() {
 		return benefits.stream()
-				.filter(benefit -> !benefit.isGiveawayEventBenefit())
+				.filter(benefit -> benefit.isNotGiveawayEventBenefit())
 				.mapToInt(Benefit::benefitAmount)
 				.sum();
 	}

@@ -6,7 +6,7 @@ public record Benefit(DecemberEvent event, int benefitAmount) {
 		return benefitAmount != 0;
 	}
 
-	public boolean isGiveawayEventBenefit() {
-		return event == DecemberEvent.GIVEAWAY_EVENT;
+	public boolean isNotGiveawayEventBenefit() {
+		return event != DecemberEvent.GIVEAWAY_EVENT;
 	}
 }
