@@ -2,15 +2,11 @@ package christmas.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import christmas.domain.benefit.Benefit;
 import christmas.domain.benefit.Benefits;
-import christmas.domain.food.Food;
 import christmas.domain.food.Foods;
 import christmas.domain.visitDate.VisitDate;
 
@@ -35,9 +31,8 @@ public class BenefitControllerTest {
 		int totalOrderAmount = foodController.getTotalOrderAmount(foods);
 		Benefits benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
 		int totalDiscountAmount = benefits.getTotalDiscountAmount();
-		Food giveaway = benefitController.getGiveaways(totalOrderAmount);
-		int totalBenefitAmount = benefitController.getTotalBenefitAmount(totalDiscountAmount, giveaway);
-		int totalPaymentAmount = benefitController.getTotalPaymentAmount(totalOrderAmount, totalDiscountAmount);
+		int totalBenefitAmount = benefits.getTotalBenefitAmount();
+		int totalPaymentAmount = totalOrderAmount + totalDiscountAmount;
 
 		assertEquals(-6246, totalDiscountAmount);
 		assertEquals(-31246, totalBenefitAmount);
@@ -52,9 +47,8 @@ public class BenefitControllerTest {
 		int totalOrderAmount = foodController.getTotalOrderAmount(foods);
 		Benefits benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
 		int totalDiscountAmount = benefits.getTotalDiscountAmount();
-		Food giveaway = benefitController.getGiveaways(totalOrderAmount);
-		int totalBenefitAmount = benefitController.getTotalBenefitAmount(totalDiscountAmount, giveaway);
-		int totalPaymentAmount = benefitController.getTotalPaymentAmount(totalOrderAmount, totalDiscountAmount);
+		int totalBenefitAmount = benefits.getTotalBenefitAmount();
+		int totalPaymentAmount = totalOrderAmount + totalDiscountAmount;
 
 		assertEquals(0, totalDiscountAmount);
 		assertEquals(0, totalBenefitAmount);
@@ -69,9 +63,8 @@ public class BenefitControllerTest {
 		int totalOrderAmount = foodController.getTotalOrderAmount(foods);
 		Benefits benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
 		int totalDiscountAmount = benefits.getTotalDiscountAmount();
-		Food giveaway = benefitController.getGiveaways(totalOrderAmount);
-		int totalBenefitAmount = benefitController.getTotalBenefitAmount(totalDiscountAmount, giveaway);
-		int totalPaymentAmount = benefitController.getTotalPaymentAmount(totalOrderAmount, totalDiscountAmount);
+		int totalBenefitAmount = benefits.getTotalBenefitAmount();
+		int totalPaymentAmount = totalOrderAmount + totalDiscountAmount;
 
 		assertEquals(-6069, totalDiscountAmount);
 		assertEquals(-31069, totalBenefitAmount);
@@ -86,9 +79,8 @@ public class BenefitControllerTest {
 		int totalOrderAmount = foodController.getTotalOrderAmount(foods);
 		Benefits benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
 		int totalDiscountAmount = benefits.getTotalDiscountAmount();
-		Food giveaway = benefitController.getGiveaways(totalOrderAmount);
-		int totalBenefitAmount = benefitController.getTotalBenefitAmount(totalDiscountAmount, giveaway);
-		int totalPaymentAmount = benefitController.getTotalPaymentAmount(totalOrderAmount, totalDiscountAmount);
+		int totalBenefitAmount = benefits.getTotalBenefitAmount();
+		int totalPaymentAmount = totalOrderAmount + totalDiscountAmount;
 
 		assertEquals(-4223, totalDiscountAmount);
 		assertEquals(-4223, totalBenefitAmount);
