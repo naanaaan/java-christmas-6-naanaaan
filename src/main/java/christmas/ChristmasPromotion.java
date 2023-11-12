@@ -36,30 +36,26 @@ public class ChristmasPromotion {
 		int totalOrderAmount = foodController.getTotalOrderAmount(foods);
 		Benefits benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
 		Food giveaway = benefitController.getGiveaways(totalOrderAmount);
-		int totalDiscountAmount = benefits.getTotalDiscountAmount();
 
 		outputView.printEventPreview(visitDate);
 		outputView.printOrderMenu(foods.toMap());
 		outputView.printTotalOrderAmountBeforeDiscount(totalOrderAmount);
+		printBenefitApplicationResult(giveaway, totalOrderAmount, benefits);
+	}
+
+	private void printBenefitApplicationResult(Food giveaway, int totalOrderAmount, Benefits benefits) {
+		int totalDiscountAmount = benefits.getTotalDiscountAmount();
+		int totalBenefitAmount = benefits.getTotalBenefitAmount();
+		int totalPaymentAmount = totalOrderAmount + totalDiscountAmount;
+
 		outputView.printGiveawayMenu(giveaway);
 		outputView.printBenefitDetails(benefits);
-		printTotalBenefitAmount(totalDiscountAmount, giveaway);
-		printTotalPaymentAmount(totalOrderAmount, totalDiscountAmount);
-		printEventbadge(totalDiscountAmount, giveaway);
-	}
-
-	private void printTotalBenefitAmount(int totalDiscountAmount, Food giveaway) {
-		int totalBenefitAmount = benefitController.getTotalBenefitAmount(totalDiscountAmount, giveaway);
 		outputView.printTotalBenefitAmount(totalBenefitAmount);
-	}
-
-	private void printTotalPaymentAmount(int totalOrderAmount, int totalDiscountAmount) {
-		int totalPaymentAmount = benefitController.getTotalPaymentAmount(totalOrderAmount, totalDiscountAmount);
 		outputView.printTotalPaymentAmountAfterDiscount(totalPaymentAmount);
+		printEventbadge(totalBenefitAmount);
 	}
 
-	private void printEventbadge(int totalDiscountAmount, Food giveaway) {
-		int totalBenefitAmount = benefitController.getTotalBenefitAmount(totalDiscountAmount, giveaway);
+	private void printEventbadge(int totalBenefitAmount) {
 		Badge badge = badgeController.getBadge(totalBenefitAmount);
 		outputView.printEventBadge(badge);
 	}
