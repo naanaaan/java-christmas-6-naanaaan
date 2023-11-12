@@ -8,18 +8,18 @@ public class Benefits {
 	private final List<Benefit> benefits;
 
 	public Benefits(List<Benefit> benefits) {
-		this.benefits = filterNonZeroDiscountBenefits(benefits);
+		this.benefits = filterNotZeroDiscountBenefits(benefits);
 	}
 
-	private List<Benefit> filterNonZeroDiscountBenefits(List<Benefit> benefits) {
+	private List<Benefit> filterNotZeroDiscountBenefits(List<Benefit> benefits) {
 		return benefits.stream()
-				.filter(benefit -> benefit.checkNotZeroDiscountAmount())
+				.filter(Benefit::checkNotZeroDiscountAmount)
 				.toList();
 	}
 
 	public int getTotalDiscountAmount() {
 		return benefits.stream()
-				.filter(benefit -> benefit.isNotGiveawayEventBenefit())
+				.filter(Benefit::isNotGiveawayEventBenefit)
 				.mapToInt(Benefit::benefitAmount)
 				.sum();
 	}
