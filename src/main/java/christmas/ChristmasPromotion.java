@@ -49,7 +49,7 @@ public class ChristmasPromotion {
 	private void printBenefitApplicationResult(Food giveaway, int totalOrderAmount, Benefits benefits) {
 		int totalDiscountAmount = benefits.getTotalDiscountAmount();
 		int totalBenefitAmount = benefits.getTotalBenefitAmount();
-		int totalPaymentAmount = totalOrderAmount + totalDiscountAmount;
+		int totalPaymentAmount = totalOrderAmount - totalDiscountAmount;
 
 		outputView.printGiveawayMenu(giveaway);
 		outputView.printBenefitDetails(benefits);
