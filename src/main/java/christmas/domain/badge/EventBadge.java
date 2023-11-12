@@ -26,8 +26,4 @@ public enum EventBadge {
 	public Badge tobadge() {
 		return new Badge(badgeName);
 	}
-
-	public String getBadgeName() {
-		return badgeName;
-	}
 }
