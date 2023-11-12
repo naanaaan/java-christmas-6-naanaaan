@@ -1,13 +1,11 @@
 package christmas;
 
-import java.util.List;
-
 import christmas.controller.BadgeController;
 import christmas.controller.BenefitController;
 import christmas.controller.FoodController;
 import christmas.controller.VisitDateController;
 import christmas.domain.badge.Badge;
-import christmas.domain.benefit.Benefit;
+import christmas.domain.benefit.Benefits;
 import christmas.domain.food.Food;
 import christmas.domain.food.Foods;
 import christmas.domain.visitDate.VisitDate;
@@ -36,9 +34,9 @@ public class ChristmasPromotion {
 		VisitDate visitDate = getVisitDateProgress();
 		Foods foods = getFoodsProgress();
 		int totalOrderAmount = foodController.getTotalOrderAmount(foods);
-		List<Benefit> benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
+		Benefits benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
 		Food giveaway = benefitController.getGiveaways(totalOrderAmount);
-		int totalDiscountAmount = benefitController.getTotalDiscountAmount(benefits);
+		int totalDiscountAmount = benefits.getTotalDiscountAmount();
 
 		outputView.printEventPreview(visitDate);
 		outputView.printOrderMenu(foods.toMap());

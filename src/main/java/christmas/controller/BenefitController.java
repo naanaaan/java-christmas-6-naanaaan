@@ -33,7 +33,7 @@ public class BenefitController {
 		this.calcualteBenefitService = new CalculateBenefitService();
 	}
 
-	public List<Benefit> getBenefits(VisitDate visitDate, Foods foods, int totalOrderAmount) {
+	public Benefits getBenefits(VisitDate visitDate, Foods foods, int totalOrderAmount) {
 		List<Benefit> benefits = new ArrayList<>();
 		int day = visitDate.getDay();
 		
@@ -46,7 +46,7 @@ public class BenefitController {
 			benefits.add(getGiveawayBenefit());
 		}
 
-		return new Benefits(benefits).getNotZeroDiscountAmount();
+		return new Benefits(benefits);
 	}
 
 	private Benefit getDayOfWeekBenefit(VisitDate visitDate, Foods foods) {
@@ -70,10 +70,6 @@ public class BenefitController {
 			return giveawayEventService.getGiveaway();
 		}
 		return null;
-	}
-
-	public int getTotalDiscountAmount(List<Benefit> benefits) {
-		return calcualteBenefitService.calculateTotalDiscountAmount(benefits);
 	}
 
 	public int getTotalBenefitAmount(int totalDiscountAmount, Food giveaway) {

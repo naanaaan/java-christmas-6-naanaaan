@@ -1,12 +1,12 @@
 package christmas.view.output;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.StringJoiner;
 
 import christmas.domain.badge.Badge;
 import christmas.domain.benefit.Benefit;
+import christmas.domain.benefit.Benefits;
 import christmas.domain.food.Food;
 import christmas.domain.visitDate.VisitDate;
 
@@ -66,12 +66,12 @@ public class OutputView {
 		giveawayMessage.add(String.format("%s %d개", giveaway.getName(), 1));
 	}
 
-	public void printBenefitDetails(List<Benefit> benefits) {
+	public void printBenefitDetails(Benefits benefits) {
 		StringJoiner benefitDetailsMessage = new StringJoiner(NEW_LINE);
 		String empty = OutputViewMessage.BENEFIT_DETAILS.getMessage() + NEW_LINE
 				+ OutputViewMessage.NOTHING.getMessage();
 
-		if (Objects.nonNull(benefits) && benefits.size() != 0) {
+		if (Objects.nonNull(benefits) && benefits.getSize() != 0) {
 			addToBenefitDetailMessage(benefitDetailsMessage, benefits);
 		}
 
@@ -80,9 +80,9 @@ public class OutputView {
 		System.out.println(NEW_LINE + benefitDetailsMessage.toString());
 	}
 
-	private void addToBenefitDetailMessage(StringJoiner benefitDetailsMessage, List<Benefit> benefits) {
+	private void addToBenefitDetailMessage(StringJoiner benefitDetailsMessage, Benefits benefits) {
 		benefitDetailsMessage.add(OutputViewMessage.BENEFIT_DETAILS.getMessage());
-		for (Benefit benefit : benefits) {
+		for (Benefit benefit : benefits.toList()) {
 			String benefitEventName = benefit.event().getName();
 			int discountAmount = benefit.benefitAmount();
 
