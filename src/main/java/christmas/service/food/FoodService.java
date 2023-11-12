@@ -52,8 +52,4 @@ public class FoodService {
 			foodCounter.put(food, number);
 		}
 	}
-
-	public int calculateFoodsPriceSum(Foods foods) {
-		return foods.getFoods().stream().mapToInt(food -> food.price()).sum();
-	}
 }
