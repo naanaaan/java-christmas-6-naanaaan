@@ -1,10 +1,10 @@
 package christmas.view.Input;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.service.ErrorMessage;
 
 public class InputView {
 
@@ -38,12 +38,9 @@ public class InputView {
 
 		InputValidator.validateOrderFormat(inputValue);
 
-		String[] separetedValue = inputValue.split(",");
-
-		for (String foodNameAndNumbers : separetedValue) {
-			String[] foodNameAndNumber = foodNameAndNumbers.split("-");
-			validateFoodName(duplicateChecker, foodNameAndNumber[0]);
-		}
+		Arrays.stream(inputValue.split(","))
+				.map(foodNameAndNumbers -> foodNameAndNumbers.split("-"))
+				.forEach(foodNameAndNumber -> validateFoodName(duplicateChecker, foodNameAndNumber[0]));
 	}
 
 	private void validateFoodName(Set<String> duplicateChecker, String foodName) {
