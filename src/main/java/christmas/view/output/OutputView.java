@@ -86,7 +86,7 @@ public class OutputView {
 			String benefitEventName = benefit.event().getName();
 			int discountAmount = benefit.benefitAmount();
 
-			benefitDetailsMessage.add(String.format("%s : %,d원", benefitEventName, discountAmount));
+			benefitDetailsMessage.add(String.format("%s : %,d원", benefitEventName, -discountAmount));
 		}
 	}
 
@@ -94,7 +94,7 @@ public class OutputView {
 		StringJoiner benefitsPrcieMessage = new StringJoiner(NEW_LINE);
 
 		benefitsPrcieMessage.add(OutputViewMessage.TOTAL_BENEFIT_AMOUNT.getMessage());
-		benefitsPrcieMessage.add(String.format("%,d원", totalBenefitAmount));
+		benefitsPrcieMessage.add(String.format("%,d원", -totalBenefitAmount));
 
 		System.out.println(NEW_LINE + benefitsPrcieMessage.toString());
 	}
