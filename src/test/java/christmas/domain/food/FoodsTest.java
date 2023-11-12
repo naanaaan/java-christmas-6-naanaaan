@@ -16,10 +16,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import christmas.domain.food.Food;
-import christmas.domain.food.FoodCategory;
-import christmas.domain.food.Foods;
-import christmas.domain.food.FoodMenu;
 import christmas.util.ErrorMessage;
 
 public class FoodsTest {
@@ -28,8 +24,7 @@ public class FoodsTest {
 	@MethodSource("createCreateFoodByOverSizeMethodParameter")
 	@ParameterizedTest
 	void createFoodsByOverSize(List<Food> foods) {
-		assertThatThrownBy(() -> new Foods(foods))
-				.isInstanceOf(IllegalArgumentException.class)
+		assertThatThrownBy(() -> new Foods(foods)).isInstanceOf(IllegalArgumentException.class)
 				.hasMessageContaining(String.format(ErrorMessage.ORDER_NUMBER.getMessage(), Foods.MAX_NUMBER));
 	}
 
@@ -58,8 +53,7 @@ public class FoodsTest {
 	@MethodSource("createCreateFoodByOnlyBeverageMethodParameter")
 	@ParameterizedTest
 	void createFoodsByOnlyBeverage(List<Food> foods) {
-		assertThatThrownBy(() -> new Foods(foods))
-				.isInstanceOf(IllegalArgumentException.class)
+		assertThatThrownBy(() -> new Foods(foods)).isInstanceOf(IllegalArgumentException.class)
 				.hasMessageContaining(ErrorMessage.ONLY_BEVERAGE.getMessage());
 	}
 
@@ -69,7 +63,7 @@ public class FoodsTest {
 
 		return Stream.of(Arguments.of(onlyBeverages1), Arguments.of(onlyBeverages2));
 	}
-	
+
 	@DisplayName("음료수만 존재하지 않을 때 정상 작동한다.")
 	@MethodSource("createCheckNomalOperation2Parameter")
 	@ParameterizedTest
@@ -87,23 +81,19 @@ public class FoodsTest {
 	private static List<Food> generateFoods(FoodMenu menu, int limitNumber) {
 		return Stream.generate(() -> menu.toFood()).limit(limitNumber).toList();
 	}
-	
+
 	@DisplayName("특정 카테고리를 가진 음식들의 갯수를 확인한다.")
 	@Test
-    void checkFoodNumberBySpecificCategory() {
-        Foods foods = new Foods(List.of(
-                new Food(FoodCategory.APPETIZER, "양송이수프", 6000),
-                new Food(FoodCategory.APPETIZER, "양송이수프", 6000),
-                new Food(FoodCategory.APPETIZER, "양송이수프", 6000),
-                new Food(FoodCategory.MAIN, "티본스테이크", 55000),
-                new Food(FoodCategory.BEVERAGE, "레드와인", 60000)
-        ));
+	void checkFoodNumberBySpecificCategory() {
+		Foods foods = new Foods(List.of(new Food(FoodCategory.APPETIZER, "양송이수프", 6000),
+				new Food(FoodCategory.APPETIZER, "양송이수프", 6000), new Food(FoodCategory.APPETIZER, "양송이수프", 6000),
+				new Food(FoodCategory.MAIN, "티본스테이크", 55000), new Food(FoodCategory.BEVERAGE, "레드와인", 60000)));
 
-        assertEquals(3, foods.countFoodsByCategory(FoodCategory.APPETIZER));
-        assertEquals(1, foods.countFoodsByCategory(FoodCategory.MAIN));
-        assertEquals(1, foods.countFoodsByCategory(FoodCategory.BEVERAGE));
-        assertEquals(0, foods.countFoodsByCategory(FoodCategory.DESSERT));
-    }
+		assertEquals(3, foods.countFoodsByCategory(FoodCategory.APPETIZER));
+		assertEquals(1, foods.countFoodsByCategory(FoodCategory.MAIN));
+		assertEquals(1, foods.countFoodsByCategory(FoodCategory.BEVERAGE));
+		assertEquals(0, foods.countFoodsByCategory(FoodCategory.DESSERT));
+	}
 
 	@DisplayName("음식들을 Map형태로 반환한다.")
 	@Test
@@ -111,14 +101,24 @@ public class FoodsTest {
 		Food food1 = new Food(FoodCategory.MAIN, "티본스테이크", 55_000);
 		Food food2 = new Food(FoodCategory.BEVERAGE, "제로콜라", 3_000);
 		Food food3 = new Food(FoodCategory.DESSERT, "초코케이크", 15_000);
-		Foods foods = new Foods(List.of(food1, food2, food3));
-		Map<Food, Integer> foodCounter = foods.toMap();
+		List<Food> foods = List.of(food1, food2, food3);
+		Map<Food, Integer> foodCounter = new Foods(foods).toMap();
 
-		assertEquals(foods.getFoodsSize(), foodCounter.size());
+		assertEquals(foods.size(), foodCounter.size());
 
-		for (Food food : foods.getFoods()) {
+		for (Food food : foods) {
 			assertTrue(foodCounter.containsKey(food));
 			assertEquals(1, foodCounter.get(food));
 		}
+	}
+
+	@DisplayName("음식들의 총 가격의 합을 확인한다.")
+	@Test
+	void checkFoodsPriceSum() {
+		Foods foods = new Foods(
+				List.of(FoodMenu.BBQ_RIBS.toFood(), FoodMenu.CHAMPAGNE.toFood(), FoodMenu.CHRISTMAS_PASTA.toFood()));
+		int expect = 104_000;
+
+		assertEquals(expect, foods.priceSum());
 	}
 }

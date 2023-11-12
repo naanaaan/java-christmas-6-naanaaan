@@ -2,24 +2,19 @@ package christmas.service.food;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import christmas.domain.food.FoodCategory;
 import christmas.domain.food.Foods;
-import christmas.domain.food.FoodMenu;
 
 public class FoodServiceTest {
 	private FoodService foodService;
-	private Foods foods;
 
 	@BeforeEach
 	void setup() {
 		foodService = new FoodService();
-		foods = new Foods(List.of(FoodMenu.BBQ_RIBS.toFood(), FoodMenu.CHAMPAGNE.toFood(), FoodMenu.CHRISTMAS_PASTA.toFood()));
 	}
 
 	@DisplayName("입력값에 따라 생성되는 음식들을 확인한다.")
@@ -32,14 +27,4 @@ public class FoodServiceTest {
 		assertEquals(1, foods.countFoodsByCategory(FoodCategory.BEVERAGE));
 		assertEquals(0, foods.countFoodsByCategory(FoodCategory.APPETIZER));
 	}
-
-	@DisplayName("음식들의 총 가격의 합을 확인한다.")
-	@Test
-	void checkFoodsPriceSum() {
-		int priceSum = foodService.calculateFoodsPriceSum(foods);
-		int expect = 104_000;
-
-		assertEquals(expect, priceSum);
-	}
-
 }
