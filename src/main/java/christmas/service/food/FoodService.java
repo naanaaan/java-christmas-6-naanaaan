@@ -1,6 +1,7 @@
 package christmas.service.food;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,8 +9,8 @@ import java.util.Map.Entry;
 import java.util.Optional;
 
 import christmas.domain.food.Food;
-import christmas.domain.food.Foods;
 import christmas.domain.food.FoodMenu;
+import christmas.domain.food.Foods;
 
 public class FoodService {
 
@@ -31,15 +32,11 @@ public class FoodService {
 
 	private Map<Food, Integer> countFood(String inputValue) {
 		Map<Food, Integer> foodCounter = new HashMap<>();
-		String[] separatedInputvalue = inputValue.split(",");
 
-		for (String foodNameAndNumbers : separatedInputvalue) {
-			String[] foodNameAndNumber = foodNameAndNumbers.split("-");
-
-			String foodName = foodNameAndNumber[0];
-			int number = Integer.parseInt(foodNameAndNumber[1]);
-			putFoodExcluingNullValue(foodCounter, foodName, number);
-		}
+		Arrays.stream(inputValue.split(","))
+				.map(foodNameAndNumbers -> foodNameAndNumbers.split("-"))
+				.forEach(foodNameAndNumber -> putFoodExcluingNullValue(foodCounter, foodNameAndNumber[0],
+						Integer.parseInt(foodNameAndNumber[1])));
 
 		return foodCounter;
 	}
