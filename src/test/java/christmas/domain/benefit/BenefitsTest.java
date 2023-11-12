@@ -41,4 +41,18 @@ class BenefitsTest {
 
 		assertEquals(expect, totalDiscountAmount);
 	}
+
+	@DisplayName("총혜택 금액을 확인한다.")
+	@CsvSource(value = { "-1000,0,-10000,-11000", "-2000,-1000,-10000,-13000" }, delimiter = ',')
+	@ParameterizedTest
+	void checkTotalBenefitAmount(int benefitAmount, int benefitAmount2, int benefitAmount3, int expect) {
+		Benefit benefit1 = new Benefit(DecemberEvent.DDAY_DISCOUNT, benefitAmount);
+		Benefit benefit2 = new Benefit(DecemberEvent.WEEKDAY_DISCOUNT, benefitAmount2);
+		Benefit benefit3 = new Benefit(DecemberEvent.GIVEAWAY_EVENT, benefitAmount3);
+
+		Benefits benefits = new Benefits(List.of(benefit1, benefit2, benefit3));
+		int totalBenefitAmount = benefits.getTotalBenefitAmount();
+
+		assertEquals(expect, totalBenefitAmount);
+	}
 }
