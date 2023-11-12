@@ -1,6 +1,5 @@
 package christmas.domain.food;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +25,7 @@ public class Foods {
 
 	private void validateFoodNumber(List<Food> foods) {
 		if (isOutOfRange(foods.size())) {
-			throw new IllegalArgumentException(
-					String.format(ErrorMessage.ORDER_NUMBER.getMessage(), MAX_NUMBER));
+			throw new IllegalArgumentException(String.format(ErrorMessage.ORDER_NUMBER.getMessage(), MAX_NUMBER));
 		}
 	}
 
@@ -42,7 +40,15 @@ public class Foods {
 	}
 
 	public int countFoodsByCategory(FoodCategory categoryToCheck) {
-		return (int) foods.stream().filter(food -> food.checkCategory(categoryToCheck)).count();
+		return (int) foods.stream()
+				.filter(food -> food.checkCategory(categoryToCheck))
+				.count();
+	}
+
+	public int priceSum() {
+		return foods.stream()
+				.mapToInt(food -> food.price())
+				.sum();
 	}
 
 	public Map<Food, Integer> toMap() {
@@ -53,13 +59,5 @@ public class Foods {
 		}
 
 		return foodMap;
-	}
-
-	public int getFoodsSize() {
-		return foods.size();
-	}
-
-	public List<Food> getFoods() {
-		return Collections.unmodifiableList(foods);
 	}
 }
