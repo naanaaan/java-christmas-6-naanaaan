@@ -123,4 +123,8 @@ public class OutputView {
 
 		System.out.println(NEW_LINE + eventBadgeMessage.toString());
 	}
+	
+	public void printErrorMessage(Exception e) {
+		System.out.println(e.getMessage());
+	}
 }
