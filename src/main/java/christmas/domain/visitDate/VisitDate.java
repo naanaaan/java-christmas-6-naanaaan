@@ -24,18 +24,23 @@ public class VisitDate {
 	}
 
 	private void validateisOutOfRange(int day) {
-		if (day > MAX_DAY || day < MIN_DAY) {
+		if (isOutOfRange(day)) {
 			throw new IllegalArgumentException(ErrorMessage.VALID_VISITDATE.getMessage());
 		}
 	}
 
-	public boolean checkWeekend() {
-		DayOfWeek dayOfWeek = date.getDayOfWeek();
-		if (dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY) {
-			return true;
-		}
+	private boolean isOutOfRange(int day) {
+		return day > MAX_DAY || day < MIN_DAY;
+	}
 
-		return false;
+	public boolean checkWeekend() {
+		DayOfWeek visitDateOfWeek = date.getDayOfWeek();
+
+		return isWeekend(visitDateOfWeek);
+	}
+
+	private boolean isWeekend(DayOfWeek visitDateOfWeek) {
+		return visitDateOfWeek == DayOfWeek.FRIDAY || visitDateOfWeek == DayOfWeek.SATURDAY;
 	}
 
 	public int getDay() {
