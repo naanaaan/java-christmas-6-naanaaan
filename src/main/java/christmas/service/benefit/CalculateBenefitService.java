@@ -18,7 +18,7 @@ public class CalculateBenefitService {
 		int giveawayPrice = 0;
 
 		if (Objects.nonNull(giveaway)) {
-			giveawayPrice = giveaway.price() * -1;
+			giveawayPrice = giveaway.getPrice() * -1;
 		}
 
 		return totalDiscountAmount + giveawayPrice;

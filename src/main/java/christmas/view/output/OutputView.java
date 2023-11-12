@@ -31,7 +31,7 @@ public class OutputView {
 		orderMenuMessage.add(OutputViewMessage.ORDER_MENU.getMessage());
 
 		for (Map.Entry<Food, Integer> entry : foods.entrySet()) {
-			String foodName = entry.getKey().name();
+			String foodName = entry.getKey().getName();
 			int number = entry.getValue();
 
 			orderMenuMessage.add(String.format("%s %d개", foodName, number));
@@ -64,7 +64,7 @@ public class OutputView {
 
 	private void addToGiveawayMessage(StringJoiner giveawayMessage, Food giveaway) {
 		giveawayMessage.add(OutputViewMessage.EVENT_PRODUCTS.getMessage());
-		giveawayMessage.add(String.format("%s %d개", giveaway.name(), 1));
+		giveawayMessage.add(String.format("%s %d개", giveaway.getName(), 1));
 	}
 
 	public void printBenefitDetails(List<Benefit> benefits) {

@@ -30,7 +30,7 @@ public class Foods {
 	}
 
 	private void validateOnlyBeverage(List<Food> foods) {
-		if (foods.stream().allMatch(food -> food.foodCategory() == FoodCategory.BEVERAGE)) {
+		if (foods.stream().allMatch(food -> food.checkCategory(FoodCategory.BEVERAGE))) {
 			throw new IllegalArgumentException(ErrorMessage.ONLY_BEVERAGE.getMessage());
 		}
 	}
@@ -47,7 +47,7 @@ public class Foods {
 
 	public int priceSum() {
 		return foods.stream()
-				.mapToInt(food -> food.price())
+				.mapToInt(food -> food.getPrice())
 				.sum();
 	}
 
