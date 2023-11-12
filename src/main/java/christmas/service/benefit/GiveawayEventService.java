@@ -13,7 +13,7 @@ public class GiveawayEventService {
 	public Benefit getBenefit() {
 		int benefitAmount = GIVEAWAY.getPrice();
 
-		return new Benefit(EVENT, benefitAmount * -1);
+		return new Benefit(EVENT, benefitAmount);
 	}
 
 	public Food getGiveaway() {

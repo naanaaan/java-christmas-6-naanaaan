@@ -28,6 +28,6 @@ public class DayOfWeekDiscountService {
 			event = WEEKDAY_EVENT;
 		}
 
-		return new Benefit(event, foodCount * DISCOUNT_AMOUNT * -1);
+		return new Benefit(event, foodCount * DISCOUNT_AMOUNT);
 	}
 }

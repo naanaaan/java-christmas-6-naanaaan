@@ -14,7 +14,7 @@ public class DDayDiscountService {
 	public Benefit getBenefit(int day) {
 		int benefitAmount = calculateAdditionalDiscount(day);
 
-		return new Benefit(EVENT, benefitAmount * -1);
+		return new Benefit(EVENT, benefitAmount);
 	}
 
 	private int calculateAdditionalDiscount(int day) {

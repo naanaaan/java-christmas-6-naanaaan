@@ -16,6 +16,6 @@ public class SpecialDiscountService {
 			benefitAmount = DISCOUNT_AMOUNT;
 		}
 
-		return new Benefit(EVNET, benefitAmount * -1);
+		return new Benefit(EVNET, benefitAmount);
 	}
 }
