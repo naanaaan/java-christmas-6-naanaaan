@@ -1,13 +1,12 @@
 package christmas;
 
 import java.util.List;
-import java.util.Optional;
 
 import christmas.controller.BadgeController;
 import christmas.controller.BenefitController;
 import christmas.controller.FoodController;
 import christmas.controller.VisitDateController;
-import christmas.domain.badge.EventBadge;
+import christmas.domain.badge.Badge;
 import christmas.domain.benefit.Benefit;
 import christmas.domain.food.Food;
 import christmas.domain.food.Foods;
@@ -63,7 +62,7 @@ public class ChristmasPromotion {
 
 	private void printEventbadge(int totalDiscountAmount, Food giveaway) {
 		int totalBenefitAmount = benefitController.getTotalBenefitAmount(totalDiscountAmount, giveaway);
-		Optional<EventBadge> badge = badgeController.getBadge(totalBenefitAmount);
+		Badge badge = badgeController.getBadge(totalBenefitAmount);
 		outputView.printEventBadge(badge);
 	}
 

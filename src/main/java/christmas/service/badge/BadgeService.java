@@ -2,13 +2,18 @@ package christmas.service.badge;
 
 import java.util.Optional;
 
+import christmas.domain.badge.Badge;
 import christmas.domain.badge.EventBadge;
 
 public class BadgeService {
 
-	public Optional<EventBadge> getBadgeByTotalBenefitAmount(int totalBenefitAmount) {
+	public Badge getBadgeByTotalBenefitAmount(int totalBenefitAmount) {
 		Optional<EventBadge> badge = EventBadge.getBadgeByTotalBenefitAmount(totalBenefitAmount);
 
-		return badge;
+		if (badge.isPresent()) {
+			return badge.get().tobadge();
+		}
+
+		return null;
 	}
 }

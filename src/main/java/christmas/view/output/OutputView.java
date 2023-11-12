@@ -3,10 +3,9 @@ package christmas.view.output;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.StringJoiner;
 
-import christmas.domain.badge.EventBadge;
+import christmas.domain.badge.Badge;
 import christmas.domain.benefit.Benefit;
 import christmas.domain.food.Food;
 import christmas.domain.visitDate.VisitDate;
@@ -109,14 +108,15 @@ public class OutputView {
 		System.out.println(NEW_LINE + totalPaymentMessage.toString());
 	}
 
-	public void printEventBadge(Optional<EventBadge> badge) {
+	public void printEventBadge(Badge badge) {
 		StringJoiner eventBadgeMessage = new StringJoiner(NEW_LINE);
 		String empty = OutputViewMessage.EVENT_BADGE.getMessage() + NEW_LINE + 
 				OutputViewMessage.NOTHING.getMessage();
 
-		if (badge.isPresent()) {
+		if (Objects.nonNull(badge)) {
+			
 			eventBadgeMessage.add(OutputViewMessage.EVENT_BADGE.getMessage());
-			eventBadgeMessage.add(badge.get().getBadgeName());
+			eventBadgeMessage.add(badge.badgeName());
 		}
 
 		eventBadgeMessage.setEmptyValue(empty);
