@@ -18,7 +18,7 @@ public class EventBadgeTest {
 		String badgeName = "";
 
 		if (badge.isPresent()) {
-			badgeName = badge.get().getBadgeName();
+			badgeName = badge.get().tobadge().badgeName();
 		}
 
 		assertEquals(badgeName, expect);
