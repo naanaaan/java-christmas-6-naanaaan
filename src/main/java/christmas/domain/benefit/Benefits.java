@@ -20,7 +20,13 @@ public class Benefits {
 	public int getTotalDiscountAmount() {
 		return benefits.stream()
 				.filter(benefit -> !benefit.isGiveawayEventBenefit())
-				.mapToInt(benefit -> benefit.benefitAmount())
+				.mapToInt(Benefit::benefitAmount)
+				.sum();
+	}
+
+	public int getTotalBenefitAmount() {
+		return benefits.stream()
+				.mapToInt(Benefit::benefitAmount)
 				.sum();
 	}
 
