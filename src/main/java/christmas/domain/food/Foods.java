@@ -45,7 +45,7 @@ public class Foods {
 				.count();
 	}
 
-	public int priceSum() {
+	public int getPriceSum() {
 		return foods.stream()
 				.mapToInt(food -> food.getPrice())
 				.sum();

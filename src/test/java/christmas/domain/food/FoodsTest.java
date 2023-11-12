@@ -119,6 +119,6 @@ public class FoodsTest {
 				List.of(FoodMenu.BBQ_RIBS.toFood(), FoodMenu.CHAMPAGNE.toFood(), FoodMenu.CHRISTMAS_PASTA.toFood()));
 		int expect = 104_000;
 
-		assertEquals(expect, foods.priceSum());
+		assertEquals(expect, foods.getPriceSum());
 	}
 }

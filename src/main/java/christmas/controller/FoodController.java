@@ -16,6 +16,6 @@ public class FoodController {
 	}
 
 	public int getTotalOrderAmount(Foods foods) {
-		return foods.priceSum();
+		return foods.getPriceSum();
 	}
 }
