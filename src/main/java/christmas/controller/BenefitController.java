@@ -8,7 +8,6 @@ import christmas.domain.benefit.Benefits;
 import christmas.domain.food.Food;
 import christmas.domain.food.Foods;
 import christmas.domain.visitDate.VisitDate;
-import christmas.service.benefit.CalculateBenefitService;
 import christmas.service.benefit.DDayDiscountService;
 import christmas.service.benefit.DayOfWeekDiscountService;
 import christmas.service.benefit.GiveawayEventService;
@@ -23,20 +22,18 @@ public class BenefitController {
 	private final DDayDiscountService dDayDiscountService;
 	private final GiveawayEventService giveawayEventService;
 	private final SpecialDiscountService specialDiscountService;
-	private final CalculateBenefitService calcualteBenefitService;
 
 	public BenefitController() {
 		this.dayOfWeekDiscountService = new DayOfWeekDiscountService();
 		this.dDayDiscountService = new DDayDiscountService();
 		this.giveawayEventService = new GiveawayEventService();
 		this.specialDiscountService = new SpecialDiscountService();
-		this.calcualteBenefitService = new CalculateBenefitService();
 	}
 
 	public Benefits getBenefits(VisitDate visitDate, Foods foods, int totalOrderAmount) {
 		List<Benefit> benefits = new ArrayList<>();
 		int day = visitDate.getDay();
-		
+
 		if (totalOrderAmount >= DISCOUT_CONDITION) {
 			benefits.add(getDayOfWeekBenefit(visitDate, foods));
 			benefits.add(getDDayBenefit(day));
@@ -70,13 +67,5 @@ public class BenefitController {
 			return giveawayEventService.getGiveaway();
 		}
 		return null;
-	}
-
-	public int getTotalBenefitAmount(int totalDiscountAmount, Food giveaway) {
-		return calcualteBenefitService.calculateTotalBenefitAmount(totalDiscountAmount, giveaway);
-	}
-
-	public int getTotalPaymentAmount(int totalOrderAmount, int totalDiscountAmount) {
-		return calcualteBenefitService.cacluclateTotalPaymentAmount(totalOrderAmount, totalDiscountAmount);
 	}
 }
