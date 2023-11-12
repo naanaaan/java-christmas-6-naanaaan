@@ -1,5 +1,7 @@
 package christmas;
 
+import java.util.function.Supplier;
+
 import christmas.controller.BadgeController;
 import christmas.controller.BenefitController;
 import christmas.controller.FoodController;
@@ -31,6 +33,7 @@ public class ChristmasPromotion {
 	}
 
 	public void run() {
+		outputView.printGreeting();
 		VisitDate visitDate = getVisitDateProgress();
 		Foods foods = getFoodsProgress();
 		int totalOrderAmount = foodController.getTotalOrderAmount(foods);
@@ -61,27 +64,19 @@ public class ChristmasPromotion {
 	}
 
 	private VisitDate getVisitDateProgress() {
-		outputView.printGreeting();
-		while (true) {
-			try {
-				int inputValue = inputView.inputVisitDate();
-				VisitDate visitDate = visitDateController.getVisitDate(inputValue);
-
-				return visitDate;
-			} catch (IllegalArgumentException e) {
-				System.out.println(e.getMessage());
-			}
-		}
+		return convertInputValueToObject(() -> visitDateController.getVisitDate(inputView.inputVisitDate()));
 	}
 
 	private Foods getFoodsProgress() {
+		return convertInputValueToObject(() -> foodController.getFoods(inputView.inputMenus()));
+	}
+
+	private <T> T convertInputValueToObject(Supplier<T> inputSupplier) {
 		while (true) {
 			try {
-				String inputValue = inputView.inputMenus();
-				Foods foods = foodController.getFoods(inputValue);
-				return foods;
+				return inputSupplier.get();
 			} catch (IllegalArgumentException e) {
-				System.out.println(e.getMessage());
+				outputView.printErrorMessage(e);
 			}
 		}
 	}
