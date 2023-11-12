@@ -16,4 +16,19 @@ public class Benefits {
 				).filter(benefit -> benefit.checkNotZeroDiscountAmount())
 				.toList();
 	}
+
+	public int getTotalDiscountAmount() {
+		return benefits.stream()
+				.filter(benefit -> !benefit.isGiveawayEventBenefit())
+				.mapToInt(benefit -> benefit.benefitAmount())
+				.sum();
+	}
+
+	public int getSize() {
+		return benefits.size();
+	}
+
+	public List<Benefit> toList() {
+		return Collections.unmodifiableList(benefits);
+	}
 }
