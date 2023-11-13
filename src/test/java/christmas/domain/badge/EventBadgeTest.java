@@ -11,11 +11,11 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class EventBadgeTest {
 
 	@DisplayName("총혜택 금액에 따라 뱃지를 부여한다.")
-	@CsvSource(value = { "-6000,별", "11000,트리", "-20000,산타", "25000,산타" }, delimiter = ',')
+	@CsvSource(value = { "6000,별", "11000,트리", "20000,산타", "25000,산타", "4000,없음" }, delimiter = ',')
 	@ParameterizedTest
 	void checkBadgeByTotalBenefitAmount(int totalBenefitAmount, String expect) {
 		Optional<EventBadge> badge = EventBadge.getBadgeByTotalBenefitAmount(totalBenefitAmount);
-		String badgeName = "";
+		String badgeName = "없음";
 
 		if (badge.isPresent()) {
 			badgeName = badge.get().tobadge().badgeName();
