@@ -8,6 +8,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
+	public static final String ORDER_DELIMITER = ",";
+	public static final String FOOD_NAME_AND_NUMBER_DELIMITER = "-";
+
 	public int inputVisitDate() {
 		System.out.println(InputMessage.INPUT_VISIT_DATE.getMessage());
 
@@ -38,8 +41,8 @@ public class InputView {
 
 		InputValidator.validateOrderFormat(inputValue);
 
-		Arrays.stream(inputValue.split(","))
-				.map(foodNameAndNumbers -> foodNameAndNumbers.split("-"))
+		Arrays.stream(inputValue.split(ORDER_DELIMITER))
+				.map(foodNameAndNumbers -> foodNameAndNumbers.split(FOOD_NAME_AND_NUMBER_DELIMITER))
 				.forEach(foodNameAndNumber -> validateFoodName(duplicateChecker, foodNameAndNumber[0]));
 	}
 
