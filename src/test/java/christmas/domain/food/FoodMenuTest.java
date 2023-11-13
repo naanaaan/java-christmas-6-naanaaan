@@ -21,7 +21,7 @@ public class FoodMenuTest {
 	}
 
 	@DisplayName("메뉴 이름에 해당하는 Enum 객체를 확인한다.")
-	@CsvSource(value = { "양송이수프, MUSHROOM_SOUP", "티본스테이크, T_BONE_STEAK", "크리스마스파스타, CHRISTMAS_PASTA",
+	@CsvSource(value = { "양송이수프, BUTTON_MUSHROOM_SOUP", "티본스테이크, T_BONE_STEAK", "크리스마스파스타, CHRISTMAS_PASTA",
 			"초코케이크, CHOCO_CAKE", "아이스크림, ICE_CREAM", "제로콜라, ZERO_COLA" }, delimiter = ',')
 	@ParameterizedTest
 	void checkGetMenuByName(String menuName, FoodMenu expect) {
