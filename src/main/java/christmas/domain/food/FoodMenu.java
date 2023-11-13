@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public enum FoodMenu {
 
-	MUSHROOM_SOUP(FoodCategory.APPETIZER, "양송이수프", 6_000),
+	BUTTON_MUSHROOM_SOUP(FoodCategory.APPETIZER, "양송이수프", 6_000),
 	TAPAS(FoodCategory.APPETIZER, "타파스", 5_500),
 	CAESAR_SALAD(FoodCategory.APPETIZER, "시저샐러드", 8_000),
 
