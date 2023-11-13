@@ -11,6 +11,7 @@ import java.util.Optional;
 import christmas.domain.food.Food;
 import christmas.domain.food.FoodMenu;
 import christmas.domain.food.Foods;
+import christmas.view.Input.InputView;
 
 public class FoodService {
 
@@ -33,8 +34,8 @@ public class FoodService {
 	private Map<Food, Integer> countFood(String inputValue) {
 		Map<Food, Integer> foodCounter = new HashMap<>();
 
-		Arrays.stream(inputValue.split(","))
-				.map(foodNameAndNumbers -> foodNameAndNumbers.split("-"))
+		Arrays.stream(inputValue.split(InputView.ORDER_DELIMITER))
+				.map(foodNameAndNumbers -> foodNameAndNumbers.split(InputView.FOOD_NAME_AND_NUMBER_DELIMITER))
 				.forEach(foodNameAndNumber -> putFoodExcluingNullValue(foodCounter, foodNameAndNumber[0],
 						Integer.parseInt(foodNameAndNumber[1])));
 
