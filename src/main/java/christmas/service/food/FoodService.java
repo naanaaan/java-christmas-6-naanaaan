@@ -43,7 +43,7 @@ public class FoodService {
 	}
 
 	private void putFoodExcluingNullValue(Map<Food, Integer> foodCounter, String foodName, int number) {
-		Optional<FoodMenu> menu = FoodMenu.getMenuByName(foodName);
+		Optional<FoodMenu> menu = FoodMenu.getMenuByFoodName(foodName);
 
 		if (menu.isPresent()) {
 			Food food = menu.get().toFood();

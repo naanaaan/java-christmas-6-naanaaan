@@ -11,7 +11,7 @@ public class GiveawayEventService {
 	private static final FoodMenu GIVEAWAY = FoodMenu.CHAMPAGNE;
 
 	public Benefit createBenefit() {
-		int benefitAmount = GIVEAWAY.getPrice();
+		int benefitAmount = GIVEAWAY.getFoodPrice();
 
 		return new Benefit(EVENT, benefitAmount);
 	}

@@ -3,24 +3,24 @@ package christmas.domain.food;
 public class Food {
 
 	private final FoodCategory foodCategory;
-	private final String name;
-	private final int price;
+	private final String foodName;
+	private final int foodPrice;
 
-	public Food(FoodCategory foodCategory, String name, int price) {
+	public Food(FoodCategory foodCategory, String foodName, int foodPrice) {
 		this.foodCategory = foodCategory;
-		this.name = name;
-		this.price = price;
+		this.foodName = foodName;
+		this.foodPrice = foodPrice;
 	}
 
 	public boolean checkCategory(FoodCategory categoryToCheck) {
 		return foodCategory == categoryToCheck;
 	}
 
-	public String getName() {
-		return name;
+	public String getFoodName() {
+		return foodName;
 	}
 
-	public int getPrice() {
-		return price;
+	public int getFoodPrice() {
+		return foodPrice;
 	}
 }

@@ -26,7 +26,7 @@ public class GiveawayEventServiceTest {
 		Benefit benefit = giveawayEventService.createBenefit();
 
 		assertEquals(DecemberEvent.GIVEAWAY_EVENT, benefit.event());
-		assertEquals(FoodMenu.CHAMPAGNE.getPrice(), benefit.benefitAmount());
+		assertEquals(FoodMenu.CHAMPAGNE.getFoodPrice(), benefit.benefitAmount());
 	}
 
 	@DisplayName("증정품이 샴페인인지 확인한다.")
@@ -34,6 +34,6 @@ public class GiveawayEventServiceTest {
 	void checkGiveaway() {
 		Food giveaway = giveawayEventService.getGiveaway();
 
-		assertEquals(giveaway.getName(), FoodMenu.CHAMPAGNE.getName());
+		assertEquals(giveaway.getFoodName(), FoodMenu.CHAMPAGNE.getFoodName());
 	}
 }

@@ -38,7 +38,7 @@ class BenefitsTest {
 		Benefit dDayBenefit = new Benefit(DecemberEvent.DDAY_DISCOUNT, dDay);
 		Benefit weekendBenefit = new Benefit(DecemberEvent.WEEKEND_DISCOUNT, weekend);
 		Benefit specialBenefit = new Benefit(DecemberEvent.SPECIAL_DISCOUNT, special);
-		Benefit giveawayBenefit = new Benefit(DecemberEvent.GIVEAWAY_EVENT, FoodMenu.CHAMPAGNE.getPrice() * -1);
+		Benefit giveawayBenefit = new Benefit(DecemberEvent.GIVEAWAY_EVENT, FoodMenu.CHAMPAGNE.getFoodPrice() * -1);
 		Benefits benefits = new Benefits(List.of(dDayBenefit, weekendBenefit, specialBenefit, giveawayBenefit));
 		int totalDiscountAmount = benefits.getTotalDiscountAmount();
 

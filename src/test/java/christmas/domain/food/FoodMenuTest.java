@@ -15,7 +15,7 @@ public class FoodMenuTest {
 	@CsvSource(value = { "초코케이크,true", "족발,false", "치킨,false", "시저샐러드,true", "레드와인,true" }, delimiter = ',')
 	@ParameterizedTest
 	void checkNameByMenuExists(String name, boolean expect) {
-		boolean result = FoodMenu.checkByName(name);
+		boolean result = FoodMenu.checkByFoodName(name);
 
 		assertEquals(expect, result);
 	}
@@ -25,11 +25,11 @@ public class FoodMenuTest {
 			"초코케이크, CHOCO_CAKE", "아이스크림, ICE_CREAM", "제로콜라, ZERO_COLA" }, delimiter = ',')
 	@ParameterizedTest
 	void checkGetMenuByName(String menuName, FoodMenu expect) {
-		Optional<FoodMenu> menu = FoodMenu.getMenuByName(menuName);
+		Optional<FoodMenu> menu = FoodMenu.getMenuByFoodName(menuName);
 
 		if (menu.isPresent()) {
 			assertEquals(expect, menu.get());
-			assertTrue(menu.get().getName().equals(menuName));
+			assertTrue(menu.get().getFoodName().equals(menuName));
 		}
 	}
 }

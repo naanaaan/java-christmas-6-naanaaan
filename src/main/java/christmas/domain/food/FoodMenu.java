@@ -22,35 +22,35 @@ public enum FoodMenu {
 	CHAMPAGNE(FoodCategory.BEVERAGE, "샴페인", 25_000);
 
 	private final FoodCategory category;
-	private final String name;
-	private final int price;
+	private final String foodName;
+	private final int foodPrice;
 
-	FoodMenu(FoodCategory category, String name, int price) {
+	FoodMenu(FoodCategory category, String foodName, int foodPrice) {
 		this.category = category;
-		this.name = name;
-		this.price = price;
+		this.foodName = foodName;
+		this.foodPrice = foodPrice;
 	}
 
-	public static boolean checkByName(String name) {
+	public static boolean checkByFoodName(String foodName) {
 		return Arrays.stream(values())
-				.anyMatch(menu -> menu.name.equals(name));
+				.anyMatch(menu -> menu.foodName.equals(foodName));
 	}
 
-	public static Optional<FoodMenu> getMenuByName(String name) {
+	public static Optional<FoodMenu> getMenuByFoodName(String foodName) {
 	    return Arrays.stream(values())
-	            .filter(menu -> menu.name.equals(name))
+	            .filter(menu -> menu.foodName.equals(foodName))
 	            .findFirst();
 	}
 
 	public Food toFood() {
-		return new Food(category, name, price);
+		return new Food(category, foodName, foodPrice);
 	}
 
-	public String getName() {
-		return name;
+	public String getFoodName() {
+		return foodName;
 	}
 
-	public int getPrice() {
-		return price;
+	public int getFoodPrice() {
+		return foodPrice;
 	}
 }

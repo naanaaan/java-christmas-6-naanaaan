@@ -23,7 +23,7 @@ public class InputValidator {
 	}
 
 	public static void validateValidFoodName(String inputValue) {
-		if (!FoodMenu.checkByName(inputValue)) {
+		if (!FoodMenu.checkByFoodName(inputValue)) {
 			throw new IllegalArgumentException(ErrorMessage.VALID_ORDER_MENU.getMessage());
 		}
 	}
