@@ -8,13 +8,13 @@ public enum DecemberEvent {
     SPECIAL_DISCOUNT("특별 할인"),
     GIVEAWAY_EVENT("증정 이벤트");
 
-    private final String name;
+	private final String name;
 
-    DecemberEvent(String name) {
-        this.name = name;
-    }
+	DecemberEvent(String name) {
+		this.name = name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 }

@@ -76,7 +76,8 @@ public class InputValidatorTest {
 			for (String foodName : foodNameList) {
 				InputValidator.validateDuplicateFoodName(duplicateChecker, foodName);
 			}
-		}).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ErrorMessage.VALID_ORDER_MENU.getMessage());
+		}).isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(ErrorMessage.VALID_ORDER_MENU.getMessage());
 	}
 
 	static Stream<Arguments> createcheckValidFoodNameMethodParameter() {
@@ -104,7 +105,8 @@ public class InputValidatorTest {
 	@ParameterizedTest
 	void checkNumberFormat(String inputValue) {
 		assertThatThrownBy(() -> InputValidator.validateNumberFormat(inputValue))
-				.isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ErrorMessage.VALID_VISITDATE.getMessage());
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(ErrorMessage.VALID_VISITDATE.getMessage());
 	}
 
 	@DisplayName("문자가 아닌 숫자만 입력시 정상작동한다.")
@@ -119,7 +121,8 @@ public class InputValidatorTest {
 	@ParameterizedTest
 	void checkIsEmpty(String inputValue) {
 		assertThatThrownBy(() -> InputValidator.validateIsEmpty(inputValue))
-				.isInstanceOf(IllegalArgumentException.class).hasMessageContaining(ErrorMessage.VALID_VISITDATE.getMessage());
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(ErrorMessage.VALID_VISITDATE.getMessage());
 	}
 
 	@DisplayName("값이 존재할 때 정상작동한다.")

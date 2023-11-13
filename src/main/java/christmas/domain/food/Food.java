@@ -23,5 +23,4 @@ public class Food {
 	public int getPrice() {
 		return price;
 	}
-
 }

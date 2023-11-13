@@ -21,12 +21,12 @@ class DayOfWeekDiscountServiceTest {
 	@BeforeEach
 	void setUp() {
 		dayOfWeekDiscountService = new DayOfWeekDiscountService();
-		foods = new Foods(List.of(FoodMenu.BBQ_RIBS.toFood(), FoodMenu.T_BONE_STEAK.toFood(), FoodMenu.SEAFOOD_PASTA.toFood(),
-				FoodMenu.CHOCO_CAKE.toFood(), FoodMenu.ICE_CREAM.toFood()));
+		foods = new Foods(List.of(FoodMenu.BBQ_RIBS.toFood(), FoodMenu.T_BONE_STEAK.toFood(),
+				FoodMenu.SEAFOOD_PASTA.toFood(), FoodMenu.CHOCO_CAKE.toFood(), FoodMenu.ICE_CREAM.toFood()));
 	}
 
 	@DisplayName("주간, 주말에 따른 할인 금액을 확인한다.")
-	@CsvSource(value = { "1,6069", "10,4046" }, delimiter=',')
+	@CsvSource(value = { "1,6069", "10,4046" }, delimiter = ',')
 	@ParameterizedTest
 	void checkDiscountAmount(int day, int expect) {
 		int discountAmount = dayOfWeekDiscountService.getBenefit(new VisitDate(day), foods).benefitAmount();

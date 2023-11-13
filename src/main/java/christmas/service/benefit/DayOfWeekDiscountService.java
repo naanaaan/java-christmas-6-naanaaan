@@ -13,7 +13,7 @@ public class DayOfWeekDiscountService {
 	private static final FoodCategory WEEKEND_DISCOUNT_ELIGIBLE = FoodCategory.MAIN;
 	private static final FoodCategory WEEKDAY_DISCOUNT_ELIGIBLE = FoodCategory.DESSERT;
 	private static final int DISCOUNT_AMOUNT = 2_023;
-	
+
 	public Benefit getBenefit(VisitDate visitDate, Foods foods) {
 		int foodCount = 0;
 		DecemberEvent event = null;
