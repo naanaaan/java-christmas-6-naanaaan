@@ -23,7 +23,7 @@ public class GiveawayEventServiceTest {
 	@DisplayName("증정헤택의 이벤트와 헤택금액을 확인한다.")
 	@Test
 	void checkGiveawayBenefitEventAndAmount() {
-		Benefit benefit = giveawayEventService.getBenefit();
+		Benefit benefit = giveawayEventService.createBenefit();
 
 		assertEquals(DecemberEvent.GIVEAWAY_EVENT, benefit.event());
 		assertEquals(FoodMenu.CHAMPAGNE.getPrice(), benefit.benefitAmount());

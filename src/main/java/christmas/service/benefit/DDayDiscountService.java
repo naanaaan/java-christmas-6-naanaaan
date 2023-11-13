@@ -11,7 +11,7 @@ public class DDayDiscountService {
 	private static final int D_DAY_DISCOUNT = 100;
 	private static final int D_DAY_BASIC_DISCOUNT_AMOUNT = 1_000;
 
-	public Benefit getBenefit(int day) {
+	public Benefit createBenefit(int day) {
 		int benefitAmount = calculateAdditionalDiscount(day);
 
 		return new Benefit(EVENT, benefitAmount);

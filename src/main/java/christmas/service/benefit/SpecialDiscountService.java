@@ -9,7 +9,7 @@ public class SpecialDiscountService {
 	private static final DecemberEvent EVNET = DecemberEvent.SPECIAL_DISCOUNT;
 	private static final int DISCOUNT_AMOUNT = 1_000;
 
-	public Benefit getBenefit(int day) {
+	public Benefit createBenefit(int day) {
 		int benefitAmount = 0;
 
 		if (SpecialDiscountDays.isContain(day)) {

@@ -47,19 +47,19 @@ public class BenefitController {
 	}
 
 	private Benefit getDayOfWeekBenefit(VisitDate visitDate, Foods foods) {
-		return dayOfWeekDiscountService.getBenefit(visitDate, foods);
+		return dayOfWeekDiscountService.createBenefit(visitDate, foods);
 	}
 
 	private Benefit getDDayBenefit(int day) {
-		return dDayDiscountService.getBenefit(day);
+		return dDayDiscountService.createBenefit(day);
 	}
 
 	private Benefit getGiveawayBenefit() {
-		return giveawayEventService.getBenefit();
+		return giveawayEventService.createBenefit();
 	}
 
 	private Benefit getSpecialBenefit(int day) {
-		return specialDiscountService.getBenefit(day);
+		return specialDiscountService.createBenefit(day);
 	}
 
 	public Food getGiveaways(int totalOrderAmount) {

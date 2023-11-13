@@ -24,7 +24,7 @@ public class BadgeServiceTest {
 	@CsvSource(value = { "20000,산타", "15000,트리", "7000,별", "17000,트리", "4000,없음", "0,없음" }, delimiter = ',')
 	@ParameterizedTest
 	void checkBadgeByTotalBenefitAmount(int totalBenefitsAmount, String expect) {
-		Badge badge = badgeService.getBadgeByTotalBenefitAmount(totalBenefitsAmount);
+		Badge badge = badgeService.createBadgeByTotalBenefitAmount(totalBenefitsAmount);
 
 		if (Objects.nonNull(badge)) {
 			assertEquals(expect, badge.badgeName());
