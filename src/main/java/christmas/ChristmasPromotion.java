@@ -43,10 +43,10 @@ public class ChristmasPromotion {
 		outputView.printEventPreview(visitDate);
 		outputView.printOrderMenu(foods.toMap());
 		outputView.printTotalOrderAmountBeforeDiscount(totalOrderAmount);
-		printBenefitApplicationResult(giveaway, totalOrderAmount, benefits);
+		printBenefitResult(giveaway, totalOrderAmount, benefits);
 	}
 
-	private void printBenefitApplicationResult(Food giveaway, int totalOrderAmount, Benefits benefits) {
+	private void printBenefitResult(Food giveaway, int totalOrderAmount, Benefits benefits) {
 		int totalDiscountAmount = benefits.getTotalDiscountAmount();
 		int totalBenefitAmount = benefits.getTotalBenefitAmount();
 		int totalPaymentAmount = totalOrderAmount - totalDiscountAmount;
