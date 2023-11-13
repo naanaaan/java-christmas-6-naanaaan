@@ -18,12 +18,12 @@ public class DayOfWeekDiscountService {
 		int foodCount = 0;
 		DecemberEvent event = null;
 
-		if (visitDate.checkWeekend()) {
+		if (visitDate.isWeekend()) {
 			foodCount = foods.countFoodsByCategory(WEEKEND_DISCOUNT_ELIGIBLE);
 			event = WEEKEND_EVENT;
 		}
 
-		if (!visitDate.checkWeekend()) {
+		if (!visitDate.isWeekend()) {
 			foodCount = foods.countFoodsByCategory(WEEKDAY_DISCOUNT_ELIGIBLE);
 			event = WEEKDAY_EVENT;
 		}

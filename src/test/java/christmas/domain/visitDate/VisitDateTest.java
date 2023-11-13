@@ -34,7 +34,7 @@ public class VisitDateTest {
 	@CsvSource(value = { "1,true", "5,false", "21,false", "30,true", }, delimiter = ',')
 	void checkWeekend(int day, boolean expect) {
 		VisitDate visitDate = new VisitDate(day);
-		boolean result = visitDate.checkWeekend();
+		boolean result = visitDate.isWeekend();
 		assertEquals(expect, result);
 	}
 }

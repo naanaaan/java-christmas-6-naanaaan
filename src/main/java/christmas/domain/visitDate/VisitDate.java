@@ -33,13 +33,13 @@ public class VisitDate {
 		return day > MAX_DAY || day < MIN_DAY;
 	}
 
-	public boolean checkWeekend() {
+	public boolean isWeekend() {
 		DayOfWeek visitDateOfWeek = date.getDayOfWeek();
 
-		return isWeekend(visitDateOfWeek);
+		return checkWeekend(visitDateOfWeek);
 	}
 
-	private boolean isWeekend(DayOfWeek visitDateOfWeek) {
+	private boolean checkWeekend(DayOfWeek visitDateOfWeek) {
 		return visitDateOfWeek == DayOfWeek.FRIDAY || visitDateOfWeek == DayOfWeek.SATURDAY;
 	}
 
