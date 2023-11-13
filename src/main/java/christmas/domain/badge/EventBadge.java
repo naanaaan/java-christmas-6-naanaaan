@@ -5,8 +5,8 @@ import java.util.Optional;
 
 public enum EventBadge {
 
-	SANTA(20_000, "산타"), 
-	TREE(10_000, "트리"), 
+	SANTA(20_000, "산타"),
+	TREE(10_000, "트리"),
 	STAR(5_000, "별");
 
 	private final int minTotalBenefitAmount;
@@ -18,8 +18,8 @@ public enum EventBadge {
 	}
 
 	public static Optional<EventBadge> getBadgeByTotalBenefitAmount(int totalBenefitAmount) {
-		return Arrays.stream(values())	
-				.filter(badge -> Math.abs(totalBenefitAmount) >= badge.minTotalBenefitAmount)
+		return Arrays.stream(values())
+				.filter(badge -> totalBenefitAmount >= badge.minTotalBenefitAmount)
 				.findFirst();
 	}
 
