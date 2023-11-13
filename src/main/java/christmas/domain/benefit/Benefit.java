@@ -2,7 +2,7 @@ package christmas.domain.benefit;
 
 public record Benefit(DecemberEvent event, int benefitAmount) {
 
-	public boolean isNotZeroDiscountAmount() {
+	public boolean isNotZeroBenefitAmount() {
 		return benefitAmount != 0;
 	}
 
