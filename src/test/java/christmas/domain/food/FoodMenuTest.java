@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class FoodMenuTest {
 
-	@DisplayName("Test")
+	@DisplayName("음식이름이 메뉴에 있는지 확인한다.")
 	@CsvSource(value = { "초코케이크,true", "족발,false", "치킨,false", "시저샐러드,true", "레드와인,true" }, delimiter = ',')
 	@ParameterizedTest
 	void checkNameByMenuExists(String name, boolean expect) {
