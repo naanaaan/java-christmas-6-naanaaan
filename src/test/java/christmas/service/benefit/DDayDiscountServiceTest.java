@@ -17,7 +17,7 @@ public class DDayDiscountServiceTest {
 	}
 
 	@DisplayName("디데이 할인 금액을 확인한다.")
-	@CsvSource(value = { "1,-1000", "24,-3300", "26,0", "25,-3400", "31,-0" }, delimiter = ',')
+	@CsvSource(value = { "1,1000", "24,3300", "26,0", "25,3400", "31,0" }, delimiter = ',')
 	@ParameterizedTest
 	void checkDDayDiscountAmount(int day, int expect) {
 		int discountAmount = dDayDiscountService.getBenefit(day).benefitAmount();

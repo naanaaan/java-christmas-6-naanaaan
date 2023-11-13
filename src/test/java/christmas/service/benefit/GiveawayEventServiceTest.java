@@ -23,6 +23,6 @@ public class GiveawayEventServiceTest {
 	void checkGiveaway() {
 		Food giveaway = giveawayEventService.getGiveaway();
 
-		assertEquals(giveaway, FoodMenu.CHAMPAGNE.toFood());
+		assertEquals(giveaway.getName(), FoodMenu.CHAMPAGNE.getName());
 	}
 }
