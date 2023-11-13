@@ -83,7 +83,7 @@ public class OutputView {
 	private void addToBenefitDetailMessage(StringJoiner benefitDetailsMessage, Benefits benefits) {
 		benefitDetailsMessage.add(OutputViewMessage.BENEFIT_DETAILS.getMessage());
 		for (Benefit benefit : benefits.toList()) {
-			String benefitEventName = benefit.event().getName();
+			String benefitEventName = benefit.event().getEventName();
 			int discountAmount = benefit.benefitAmount();
 
 			benefitDetailsMessage.add(String.format("%s : %,d원", benefitEventName, -discountAmount));
