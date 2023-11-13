@@ -49,14 +49,14 @@ public class OutputView {
 
 	public void printGiveawayMenu(Food giveaway) {
 		StringJoiner giveawayMessage = new StringJoiner(NEW_LINE);
-		String empty = OutputViewMessage.EVENT_PRODUCTS.getMessage() + NEW_LINE
+		String emptyMessage = OutputViewMessage.EVENT_PRODUCTS.getMessage() + NEW_LINE
 				+ OutputViewMessage.NOTHING.getMessage();
 
 		if (Objects.nonNull(giveaway)) {
 			addToGiveawayMessage(giveawayMessage, giveaway);
 		}
 
-		giveawayMessage.setEmptyValue(empty);
+		giveawayMessage.setEmptyValue(emptyMessage);
 
 		System.out.println(NEW_LINE + giveawayMessage.toString());
 	}
@@ -68,14 +68,14 @@ public class OutputView {
 
 	public void printBenefitDetails(Benefits benefits) {
 		StringJoiner benefitDetailsMessage = new StringJoiner(NEW_LINE);
-		String empty = OutputViewMessage.BENEFIT_DETAILS.getMessage() + NEW_LINE
+		String emptyMessage = OutputViewMessage.BENEFIT_DETAILS.getMessage() + NEW_LINE
 				+ OutputViewMessage.NOTHING.getMessage();
 
 		if (Objects.nonNull(benefits) && benefits.getSize() != 0) {
 			addToBenefitDetailMessage(benefitDetailsMessage, benefits);
 		}
 
-		benefitDetailsMessage.setEmptyValue(empty);
+		benefitDetailsMessage.setEmptyValue(emptyMessage);
 
 		System.out.println(NEW_LINE + benefitDetailsMessage.toString());
 	}
@@ -110,20 +110,20 @@ public class OutputView {
 
 	public void printEventBadge(Badge badge) {
 		StringJoiner eventBadgeMessage = new StringJoiner(NEW_LINE);
-		String empty = OutputViewMessage.EVENT_BADGE.getMessage() + NEW_LINE + 
-				OutputViewMessage.NOTHING.getMessage();
+		String emptyMessage = OutputViewMessage.EVENT_BADGE.getMessage() + NEW_LINE
+				+ OutputViewMessage.NOTHING.getMessage();
 
 		if (Objects.nonNull(badge)) {
-			
+
 			eventBadgeMessage.add(OutputViewMessage.EVENT_BADGE.getMessage());
 			eventBadgeMessage.add(badge.badgeName());
 		}
 
-		eventBadgeMessage.setEmptyValue(empty);
+		eventBadgeMessage.setEmptyValue(emptyMessage);
 
 		System.out.println(NEW_LINE + eventBadgeMessage.toString());
 	}
-	
+
 	public void printErrorMessage(Exception e) {
 		System.out.println(e.getMessage());
 	}
