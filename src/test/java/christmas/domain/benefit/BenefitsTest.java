@@ -17,19 +17,22 @@ class BenefitsTest {
 	@DisplayName("헤택금액이이 0이 아닌 혜택들을 반환하는지 확인한다.")
 	@Test
 	void checkNotZeroBenefitAmountBenefits() {
-		Benefit benefit1 = new Benefit(DecemberEvent.DDAY_DISCOUNT, -1000);
+		Benefit benefit1 = new Benefit(DecemberEvent.DDAY_DISCOUNT, 1000);
 		Benefit benefit2 = new Benefit(DecemberEvent.WEEKDAY_DISCOUNT, 0);
-		Benefit benefit3 = new Benefit(DecemberEvent.GIVEAWAY_EVENT, -10000);
+		Benefit benefit3 = new Benefit(DecemberEvent.GIVEAWAY_EVENT, 10000);
+		Benefit benefit4 = new Benefit(DecemberEvent.GIVEAWAY_EVENT, 2000);
+		Benefit benefit5 = new Benefit(DecemberEvent.GIVEAWAY_EVENT, 0);
 
-		Benefits benefits = new Benefits(List.of(benefit1, benefit2, benefit3));
+		Benefits benefits = new Benefits(List.of(benefit1, benefit2, benefit3, benefit4, benefit5));
 
-		assertEquals(2, benefits.getSize());
+		assertEquals(3, benefits.getSize());
 		assertTrue(benefits.toList().contains(benefit1));
 		assertTrue(benefits.toList().contains(benefit3));
+		assertTrue(benefits.toList().contains(benefit4));
 	}
 
 	@DisplayName("총할인 금액을 확인한다.")
-	@CsvSource(value = { "-2400,-2023,0,-4423", "-1000,0,0,-1000", "-2300,-2023,0,-4323" }, delimiter = ',')
+	@CsvSource(value = { "2400,2023,0,4423", "1000,0,0,1000", "2300,2023,0,4323" }, delimiter = ',')
 	@ParameterizedTest
 	void checkTotalDiscountAmount(int dDay, int weekend, int special, int expect) {
 		Benefit dDayBenefit = new Benefit(DecemberEvent.DDAY_DISCOUNT, dDay);
@@ -43,7 +46,7 @@ class BenefitsTest {
 	}
 
 	@DisplayName("총혜택 금액을 확인한다.")
-	@CsvSource(value = { "-1000,0,-10000,-11000", "-2000,-1000,-10000,-13000" }, delimiter = ',')
+	@CsvSource(value = { "1000,0,10000,11000", "2000,1000,10000,13000" }, delimiter = ',')
 	@ParameterizedTest
 	void checkTotalBenefitAmount(int benefitAmount, int benefitAmount2, int benefitAmount3, int expect) {
 		Benefit benefit1 = new Benefit(DecemberEvent.DDAY_DISCOUNT, benefitAmount);
