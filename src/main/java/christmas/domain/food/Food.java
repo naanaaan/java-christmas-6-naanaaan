@@ -12,7 +12,7 @@ public class Food {
 		this.foodPrice = foodPrice;
 	}
 
-	public boolean checkCategory(FoodCategory categoryToCheck) {
+	public boolean isCategoryMatching(FoodCategory categoryToCheck) {
 		return foodCategory == categoryToCheck;
 	}
 

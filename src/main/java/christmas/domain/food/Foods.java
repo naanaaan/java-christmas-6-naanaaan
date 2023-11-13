@@ -30,7 +30,7 @@ public class Foods {
 	}
 
 	private void validateOnlyBeverage(List<Food> foods) {
-		if (foods.stream().allMatch(food -> food.checkCategory(FoodCategory.BEVERAGE))) {
+		if (foods.stream().allMatch(food -> food.isCategoryMatching(FoodCategory.BEVERAGE))) {
 			throw new IllegalArgumentException(ErrorMessage.ONLY_BEVERAGE.getMessage());
 		}
 	}
@@ -41,7 +41,7 @@ public class Foods {
 
 	public int countFoodsByCategory(FoodCategory categoryToCheck) {
 		return (int) foods.stream()
-				.filter(food -> food.checkCategory(categoryToCheck))
+				.filter(food -> food.isCategoryMatching(categoryToCheck))
 				.count();
 	}
 

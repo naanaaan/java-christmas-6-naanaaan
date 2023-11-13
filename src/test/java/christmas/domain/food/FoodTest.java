@@ -13,7 +13,7 @@ public class FoodTest {
 	void checkFoodCategory() {
 		Food food = new Food(FoodCategory.APPETIZER, "에피타이저", 2000);
 
-		assertTrue(food.checkCategory(FoodCategory.APPETIZER));
-		assertFalse(food.checkCategory(FoodCategory.MAIN));
+		assertTrue(food.isCategoryMatching(FoodCategory.APPETIZER));
+		assertFalse(food.isCategoryMatching(FoodCategory.MAIN));
 	}
 }
