@@ -23,7 +23,7 @@ public enum EventBadge {
 				.findFirst();
 	}
 
-	public Badge tobadge() {
+	public Badge toBadge() {
 		return new Badge(badgeName);
 	}
 }

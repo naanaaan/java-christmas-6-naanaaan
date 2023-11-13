@@ -11,7 +11,7 @@ public class BadgeService {
 		Optional<EventBadge> badge = EventBadge.getBadgeByTotalBenefitAmount(totalBenefitAmount);
 
 		if (badge.isPresent()) {
-			return badge.get().tobadge();
+			return badge.get().toBadge();
 		}
 
 		return null;
