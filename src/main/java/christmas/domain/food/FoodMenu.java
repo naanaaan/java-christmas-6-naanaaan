@@ -31,7 +31,7 @@ public enum FoodMenu {
 		this.foodPrice = foodPrice;
 	}
 
-	public static boolean checkByFoodName(String foodName) {
+	public static boolean checkFoodNameByMenuExists(String foodName) {
 		return Arrays.stream(values())
 				.anyMatch(menu -> menu.foodName.equals(foodName));
 	}
