@@ -15,12 +15,12 @@ public class OutputView {
 	private static final String NEW_LINE = System.lineSeparator();
 
 	public void printGreeting() {
-		System.out.println(OutputViewMessage.GREETING.getMessage());
+		System.out.println(String.format(OutputViewMessage.GREETING.getMessage(), VisitDate.MONTH));
 	}
 
 	public void printEventPreview(VisitDate visitDate) {
 		int day = visitDate.getDay();
-		String message = String.format(OutputViewMessage.EVENT_PREVIEW.getMessage(), day);
+		String message = String.format(OutputViewMessage.EVENT_PREVIEW.getMessage(), VisitDate.MONTH, day);
 
 		System.out.println(message);
 	}
@@ -110,12 +110,12 @@ public class OutputView {
 
 	public void printEventBadge(Badge badge) {
 		StringJoiner eventBadgeMessage = new StringJoiner(NEW_LINE);
-		String emptyMessage = OutputViewMessage.EVENT_BADGE.getMessage() + NEW_LINE
+		String emptyMessage = String.format(OutputViewMessage.EVENT_BADGE.getMessage(), VisitDate.MONTH) + NEW_LINE
 				+ OutputViewMessage.NOTHING.getMessage();
 
 		if (Objects.nonNull(badge)) {
 
-			eventBadgeMessage.add(OutputViewMessage.EVENT_BADGE.getMessage());
+			eventBadgeMessage.add(String.format(OutputViewMessage.EVENT_BADGE.getMessage(), VisitDate.MONTH));
 			eventBadgeMessage.add(badge.badgeName());
 		}
 

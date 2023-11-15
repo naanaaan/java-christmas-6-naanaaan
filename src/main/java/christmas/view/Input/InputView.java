@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.domain.visitDate.VisitDate;
 
 public class InputView {
 
@@ -12,7 +13,7 @@ public class InputView {
 	public static final String FOOD_NAME_AND_NUMBER_DELIMITER = "-";
 
 	public int inputVisitDate() {
-		System.out.println(InputMessage.INPUT_VISIT_DATE.getMessage());
+		System.out.println(String.format(InputMessage.INPUT_VISIT_DATE.getMessage(), VisitDate.MONTH));
 
 		String inputValue = Console.readLine();
 
