@@ -23,7 +23,7 @@ public class BenefitControllerTest {
 		foodController = new FoodController();
 	}
 
-	@DisplayName("총 할인, 혜택, 결제금액들을 확인한다1.")
+	@DisplayName("총할인 금액, 총혜택 금액, 할인 후 예상 결제금액들을 확인한다1.")
 	@Test
 	void checkTotalDiscountAmountAndTotalBenefitAmountAndTotalPaymentAmount1() {
 		VisitDate visitDate = visitDateController.getVisitDate(3);
@@ -32,14 +32,14 @@ public class BenefitControllerTest {
 		Benefits benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
 		int totalDiscountAmount = benefits.getTotalDiscountAmount();
 		int totalBenefitAmount = benefits.getTotalBenefitAmount();
-		int totalPaymentAmount = totalOrderAmount - totalDiscountAmount;
+		int expectedPaymentAfterDiscount = totalOrderAmount - totalDiscountAmount;
 
 		assertEquals(6_246, totalDiscountAmount);
 		assertEquals(31_246, totalBenefitAmount);
-		assertEquals(135_754, totalPaymentAmount);
+		assertEquals(135_754, expectedPaymentAfterDiscount);
 	}
 
-	@DisplayName("총 할인, 혜택, 결제금액들을 확인한다2.")
+	@DisplayName("총할인 금액, 총혜택 금액, 할인 후 예상 결제금액들을 확인한다2.")
 	@Test
 	void checkTotalDiscountAmountAndTotalBenefitAmountAndTotalPaymentAmount2() {
 		VisitDate visitDate = visitDateController.getVisitDate(26);
@@ -48,14 +48,14 @@ public class BenefitControllerTest {
 		Benefits benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
 		int totalDiscountAmount = benefits.getTotalDiscountAmount();
 		int totalBenefitAmount = benefits.getTotalBenefitAmount();
-		int totalPaymentAmount = totalOrderAmount - totalDiscountAmount;
+		int expectedPaymentAfterDiscount = totalOrderAmount - totalDiscountAmount;
 
 		assertEquals(0, totalDiscountAmount);
 		assertEquals(0, totalBenefitAmount);
-		assertEquals(8_500, totalPaymentAmount);
+		assertEquals(8_500, expectedPaymentAfterDiscount);
 	}
 
-	@DisplayName("총 할인, 혜택, 결제금액들을 확인한다3.")
+	@DisplayName("총할인 금액, 총혜택 금액, 할인 후 예상 결제금액들을 확인한다3.")
 	@Test
 	void checkTotalDiscountAmountAndTotalBenefitAmountAndTotalPaymentAmount3() {
 		VisitDate visitDate = visitDateController.getVisitDate(30);
@@ -64,14 +64,14 @@ public class BenefitControllerTest {
 		Benefits benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
 		int totalDiscountAmount = benefits.getTotalDiscountAmount();
 		int totalBenefitAmount = benefits.getTotalBenefitAmount();
-		int totalPaymentAmount = totalOrderAmount - totalDiscountAmount;
+		int expectedPaymentAfterDiscount = totalOrderAmount - totalDiscountAmount;
 
 		assertEquals(6_069, totalDiscountAmount);
 		assertEquals(31_069, totalBenefitAmount);
-		assertEquals(176_931, totalPaymentAmount);
+		assertEquals(176_931, expectedPaymentAfterDiscount);
 	}
 
-	@DisplayName("총 할인, 혜택, 결제금액들을 확인한다4.")
+	@DisplayName("총할인 금액, 총혜택 금액, 할인 후 예상 결제금액들을 확인한다4.")
 	@Test
 	void checkTotalDiscountAmountAndTotalBenefitAmountAndTotalPaymentAmount4() {
 		VisitDate visitDate = visitDateController.getVisitDate(3);
@@ -80,10 +80,10 @@ public class BenefitControllerTest {
 		Benefits benefits = benefitController.getBenefits(visitDate, foods, totalOrderAmount);
 		int totalDiscountAmount = benefits.getTotalDiscountAmount();
 		int totalBenefitAmount = benefits.getTotalBenefitAmount();
-		int totalPaymentAmount = totalOrderAmount - totalDiscountAmount;
+		int expectedPaymentAfterDiscount = totalOrderAmount - totalDiscountAmount;
 
 		assertEquals(4_223, totalDiscountAmount);
 		assertEquals(4_223, totalBenefitAmount);
-		assertEquals(10_777, totalPaymentAmount);
+		assertEquals(10_777, expectedPaymentAfterDiscount);
 	}
 }
