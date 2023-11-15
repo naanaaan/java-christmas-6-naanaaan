@@ -99,13 +99,13 @@ public class OutputView {
 		System.out.println(NEW_LINE + benefitsPrcieMessage.toString());
 	}
 
-	public void printTotalPaymentAmountAfterDiscount(int totalPayment) {
-		StringJoiner totalPaymentMessage = new StringJoiner(NEW_LINE);
+	public void printExpectedPaymentAfterDiscount(int expectedPaymentAfterDiscount) {
+		StringJoiner expectedPaymentAfterDiscountMessage = new StringJoiner(NEW_LINE);
 
-		totalPaymentMessage.add(OutputViewMessage.TOTAL_PAYMENT_AMOUNT_AFTER_DISCOUNT.getMessage());
-		totalPaymentMessage.add(String.format("%,d원", totalPayment));
+		expectedPaymentAfterDiscountMessage.add(OutputViewMessage.EXPECTED_PAYMENT_AMOUNT_AFTER_DISCOUNT.getMessage());
+		expectedPaymentAfterDiscountMessage.add(String.format("%,d원", expectedPaymentAfterDiscount));
 
-		System.out.println(NEW_LINE + totalPaymentMessage.toString());
+		System.out.println(NEW_LINE + expectedPaymentAfterDiscountMessage.toString());
 	}
 
 	public void printEventBadge(Badge badge) {
