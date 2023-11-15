@@ -7,10 +7,10 @@ import christmas.util.ErrorMessage;
 
 public class VisitDate {
 
-	private static int YEAR = 2023;
-	public static int MONTH = 12;
-	private static int MIN_DAY = 1;
-	private static int MAX_DAY = LocalDate.of(YEAR, MONTH, 1).lengthOfMonth();
+	private static final int YEAR = 2023;
+	public static final int MONTH = 12;
+	private static final int MIN_DAY = 1;
+	private static final int MAX_DAY = LocalDate.of(YEAR, MONTH, 1).lengthOfMonth();
 
 	private final LocalDate date;
 
